@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.tower.Application",
+            "projectName": "kafka-dashboard-be"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-KafkaDashboardApp<kafka-dashboard-be>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.tower.KafkaDashboardApp",
+            "projectName": "kafka-dashboard-be",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

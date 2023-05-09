@@ -1,0 +1,14 @@
+
+
+/api/cluster
+
+/api/topics
+
+/api/topics/cargo-close-req-topic/partitions
+
+/api/topics/cargo-close-req-topic/configuration
+
+
+/api/consumer-groups
+
+/api/schemas

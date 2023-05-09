@@ -1,0 +1,32 @@
+kafka-console-consumer  --bootstrap-server  pkc-6ojv2.us-west4.gcp.confluent.cloud:9092 --topic  beta_topic  --consumer.config  consumer.properties --group test_consumer
+kafka-consumer-groups --bootstrap-server  pkc-6ojv2.us-west4.gcp.confluent.cloud:9092   --command-config consumer.properties  --group test_consumer --describe
+
+
+kafka-console-consumer  --bootstrap-server  pkc-6ojv2.us-west4.gcp.confluent.cloud:9092 --topic  atif_topic  --consumer.config  consumer.properties --group test_group
+
+kafka-console-producer  --bootstrap-server  pkc-6ojv2.us-west4.gcp.confluent.cloud:9092 --topic  atif_topic  --producer.config  producer.properties
+
+
+ cc api-key create --resource lkc-xm6o01 --service-account sa-lzz91z
+It may take a couple of minutes for the API key to be ready.
+Save the API key and secret. The secret is not retrievable later.
++------------+------------------------------------------------------------------+
+| API Key    | KSSHMSZY4L5FUGVV                                                 |
+| API Secret | Bh4nBOaz/kCDnOt0hz47dvoxf5lqxz0mmY3GujlQRftflgSInMNtG91tZzZxC28w |
++------------+------------------------------------------------------------------+
+
+cc kafka acl create --allow --service-account sa-lzz91z --operations READ,WRITE,DESCRIBE --topic atif_topic
+
+    Principal    | Permission | Operation | Resource Type | Resource Name | Pattern Type  
+-----------------+------------+-----------+---------------+---------------+---------------
+  User:sa-lzz91z | ALLOW      | DESCRIBE  | TOPIC         | atif_topic    | LITERAL       
+  User:sa-lzz91z | ALLOW      | READ      | TOPIC         | atif_topic    | LITERAL       
+  User:sa-lzz91z | ALLOW      | WRITE     | TOPIC         | atif_topic    | LITERAL  
+
+(pattern=ResourcePattern(resourceType=TOPIC, name=atif_topic, patternType=LITERAL), entry=(principal=User:185378, host=*, operation=DESCRIBE, permissionType=ALLOW))
+(pattern=ResourcePattern(resourceType=TOPIC, name=atif_topic, patternType=LITERAL), entry=(principal=User:185378, host=*, operation=WRITE, permissionType=ALLOW))
+(pattern=ResourcePattern(resourceType=TOPIC, name=atif_topic, patternType=LITERAL), entry=(principal=User:185378, host=*, operation=READ, permissionType=ALLOW))
+
+(pattern=ResourcePattern(resourceType=GROUP, name=*, patternType=LITERAL), entry=(principal=User:DMPZETAYAA5A2QW6, host=*, operation=ALL, permissionType=ALLOW))
+(pattern=ResourcePattern(resourceType=CLUSTER, name=kafka-cluster, patternType=LITERAL), entry=(principal=User:DMPZETAYAA5A2QW6, host=*, operation=ALL, permissionType=ALLOW))
+(pattern=ResourcePattern(resourceType=TOPIC, name=*, patternType=LITERAL), entry=(principal=User:DMPZETAYAA5A2QW6, host=*, operation=ALL, permissionType=ALLOW))

@@ -1,0 +1,33 @@
+.login-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // background: var(--color-black);
+  // color: var(--color-white);
+  background: var(--color-black) url("../../assets/login-bg.svg") no-repeat
+    right center;
+  background-size: contain;
+
+  .login-content {
+    height: 65vh;
+    position: absolute;
+    padding: 14vh 0 0 1rem;
+
+    img {
+      object-fit: cover;
+      object-position: bottom;
+    }
+
+    .title {
+      padding: 0.6rem 0 0rem;
+    }
+
+    .title-desc {
+      font-weight: normal;
+    }
+
+    label {
+      font-size: 0.7rem;
+    }
+  }
+}

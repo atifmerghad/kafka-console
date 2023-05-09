@@ -1,0 +1,177 @@
+{
+    "consumerGroups": [
+        {
+            "groupId": "marketplace-consumer",
+            "state": "Stable",
+            "protocolType": "consumer",
+            "protocol": "RoundRobinAssigner",
+            "members": [
+                {
+                    "id": "marketplace-69e1d743-65d4-4ebf-873b-bf50a9aae97c",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.2.76",
+                    "assignments": [
+                        {
+                            "topicName": "order-status-topic",
+                            "partitionIds": [
+                                0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "marketplace-e732b132-cb62-4d26-b05c-199faa3933c8",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.1.38",
+                    "assignments": []
+                }
+            ],
+            "coordinatorId": 2,
+            "topicOffsets": [
+                {
+                    "topic": "order-status-topic",
+                    "summedLag": 0,
+                    "partitionCount": 1,
+                    "partitionsWithOffset": 1,
+                    "partitionOffsets": [
+                        {
+                            "partitionId": 0,
+                            "groupOffset": 2675,
+                            "highWaterMark": 2675,
+                            "lag": 0
+                        }
+                    ]
+                }
+            ],
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "groupId": "marketplace-consumer-cargo-close-res-topic",
+            "state": "Stable",
+            "protocolType": "consumer",
+            "protocol": "RoundRobinAssigner",
+            "members": [
+                {
+                    "id": "marketplace-d30fd38d-835b-42a6-82f0-4cb6e7471ab5",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.2.76",
+                    "assignments": []
+                },
+                {
+                    "id": "marketplace-aa750fd3-07c6-4ae4-856b-fa122bcc4da5",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.1.38",
+                    "assignments": [
+                        {
+                            "topicName": "cargo-close-res-topic",
+                            "partitionIds": [
+                                0
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "coordinatorId": 2,
+            "topicOffsets": [],
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "groupId": "marketplace-consumer-cargo-open-res-topic",
+            "state": "Stable",
+            "protocolType": "consumer",
+            "protocol": "RoundRobinAssigner",
+            "members": [
+                {
+                    "id": "marketplace-5a159554-83fe-4ecf-805f-959e0195484a",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.1.38",
+                    "assignments": [
+                        {
+                            "topicName": "cargo-open-res-topic",
+                            "partitionIds": [
+                                0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "marketplace-8599705f-5a70-4435-874d-c23d65d849ca",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.2.76",
+                    "assignments": []
+                }
+            ],
+            "coordinatorId": 0,
+            "topicOffsets": [
+                {
+                    "topic": "cargo-open-res-topic",
+                    "summedLag": 0,
+                    "partitionCount": 1,
+                    "partitionsWithOffset": 1,
+                    "partitionOffsets": [
+                        {
+                            "partitionId": 0,
+                            "groupOffset": 98,
+                            "highWaterMark": 98,
+                            "lag": 0
+                        }
+                    ]
+                }
+            ],
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "groupId": "marketplace-consumer-order-tracking-topic",
+            "state": "Stable",
+            "protocolType": "consumer",
+            "protocol": "RoundRobinAssigner",
+            "members": [
+                {
+                    "id": "marketplace-4e85db06-30a7-4aac-9ef1-17c6a5464caa",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.2.76",
+                    "assignments": [
+                        {
+                            "topicName": "order-tracking-topic",
+                            "partitionIds": [
+                                0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "marketplace-60908521-665c-44e3-9b9d-8054fa820f8c",
+                    "clientId": "marketplace",
+                    "clientHost": "/10.244.1.38",
+                    "assignments": []
+                }
+            ],
+            "coordinatorId": 2,
+            "topicOffsets": [
+                {
+                    "topic": "order-tracking-topic",
+                    "summedLag": 0,
+                    "partitionCount": 1,
+                    "partitionsWithOffset": 1,
+                    "partitionOffsets": [
+                        {
+                            "partitionId": 0,
+                            "groupOffset": 354856,
+                            "highWaterMark": 354856,
+                            "lag": 0
+                        }
+                    ]
+                }
+            ],
+            "allowedActions": [
+                "all"
+            ]
+        }
+    ]
+}

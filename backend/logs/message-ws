@@ -1,0 +1,39 @@
+{
+    "type": "message",
+    "message": {
+        "partitionID": 0,
+        "offset": 354806,
+        "timestamp": 1675358471859,
+        "compression": "uncompressed",
+        "isTransactional": false,
+        "headers": [],
+        "key": {
+            "payload": {},
+            "encoding": "none",
+            "schemaId": 0,
+            "size": 0
+        },
+        "value": {
+            "payload": {
+                "status": 200,
+                "orderId": "--aaf2459a-fa90-42d6-a87b-b1358c9977fc",
+                "robotId": "ob01_2022_05_02",
+                "cabinId": "CABIN1",
+                "orderStatus": "No confirmation received after booking",
+                "statusCode": "A012",
+                "estimatedPickup": 0,
+                "estimatedDelivery": 0,
+                "currentLat": "27.550770",
+                "currentLon": "35.534211",
+                "statusURL": "https://lh5xjg5q442hs4qxdhxnynwoly.apigateway.me-jeddah-1.oci.customer-oci.com/ottonomywebhook/ottonomy/status",
+                "trackerURL": "https://lh5xjg5q442hs4qxdhxnynwoly.apigateway.me-jeddah-1.oci.customer-oci.com/ottonomywebhook/ottonomy/track",
+                "estimatedDeliveryKSA": 0,
+                "estimatedPickupKSA": 0
+            },
+            "encoding": "json",
+            "schemaId": 0,
+            "size": 577
+        },
+        "isValueNull": false
+    }
+}

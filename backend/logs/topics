@@ -1,0 +1,200 @@
+{
+    "topics": [
+        {
+            "topicName": "__consumer_offsets",
+            "isInternal": true,
+            "partitionCount": 50,
+            "replicationFactor": 1,
+            "cleanupPolicy": "compact",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 466247
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "_schemas",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 3,
+            "cleanupPolicy": "compact",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "cargo-close-req-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "cargo-close-res-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "cargo-open-req-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "cargo-open-res-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-cancel-req-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-cancel-res-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-confirm-req-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-confirm-res-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-plan-req-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-plan-res-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 0
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-status-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 1229795
+            },
+            "allowedActions": [
+                "all"
+            ]
+        },
+        {
+            "topicName": "order-tracking-topic",
+            "isInternal": false,
+            "partitionCount": 1,
+            "replicationFactor": 1,
+            "cleanupPolicy": "delete",
+            "documentation": "NOT_CONFIGURED",
+            "logDirSummary": {
+                "totalSizeBytes": 12092386
+            },
+            "allowedActions": [
+                "all"
+            ]
+        }
+    ]
+}
