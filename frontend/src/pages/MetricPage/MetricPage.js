@@ -3,6 +3,9 @@ import { Grid, Column } from '@carbon/react';
 import { LineChart } from "@carbon/charts-react";
 import "@carbon/charts/styles.css";
 
+import Layout from "../../components/Layout/Layout";
+
+
 const MetricPage = () => {
 	const  state = {
 		data: [
@@ -127,9 +130,9 @@ const MetricPage = () => {
 }
 	};;
 
-	return (
-		<>
-		<Grid >
+	return ( 
+		<Layout>
+		<div className="page-container">
 			<Column lg={8} md={8} sm={8}>
 				<LineChart
 				data={state.data}
@@ -140,8 +143,8 @@ const MetricPage = () => {
 				data={state.data}
 				options={state.options} />
 			</Column>
-		</Grid>
-		</>
+		</div>
+		</Layout>
 	);
 }
 

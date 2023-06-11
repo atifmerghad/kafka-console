@@ -1,16 +1,15 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import Layout from "../../components/Layout/Layout";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   Grid,
   Column,
-  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableSelectRow, TableToolbar,
-  TableBatchActions, TableBatchActionn, TableToolbarContent, TableBatchAction, TableToolbarSearch, TableToolbarMenu,
-  TableToolbarAction, Button, TableSelectAll, Stack, Section, Heading, Tile, Pagination, Checkbox,
-  Modal, TextInput, SelectItem, Select, ToastNotification, InlineNotification,TableExpandRow,TableExpandHeader,DataTableSkeleton,SkeletonText, Theme
+  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, Tile, Pagination,ToastNotification,TableExpandRow,TableExpandHeader,DataTableSkeleton,SkeletonText, Theme
 } from '@carbon/react';
 import { headerData, rowData } from './sampleData';
-import { TrashCan, Save, Download, Add, Trash } from '@carbon/react/icons';
 
 import Svg from '../../components/Svg'
 
@@ -48,7 +47,9 @@ const BrokerPage = () => {
       setBrokers(brokers);
       allRows = brokers;
       setRows(paginate({ page: 1, pageSize: 10 }));
-    });
+    }).catch(error => {
+      console.log("Axios handle error - ctash")
+   });
   }, []);
 
   const paginate = ({ page, pageSize }) => {
@@ -58,8 +59,8 @@ const BrokerPage = () => {
   };
 
   return (
-    <Theme>
-    <Grid  fullWidth>
+    <Layout>
+    <div className="page-container">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
@@ -161,8 +162,8 @@ const BrokerPage = () => {
           style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }
-    </Grid>
-    </Theme>
+    </div>
+    </Layout>
   );
 };
 

@@ -23,6 +23,7 @@ public class ProducerController {
     public void send(@PathVariable("topicName") String topicName,
             @RequestBody Message message,
             @RequestParam("clusterId") String clusterId) throws Exception {
+            System.out.println("Message : "+ message);
             producerService.produce(topicName, message, clusterId);
     } 
 }

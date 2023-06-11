@@ -1,19 +1,7 @@
-import React, { Component } from 'react';
-import UIShell from './pages/UIShell/UIShell';
-import Login from './pages/Login';
-import './App.scss';
-import { Theme } from '@carbon/react';
+import Router from "./utils/router";
 
-
-class App extends Component {
-  
-  render() {
-    return (
-        <Theme >
-          <UIShell />
-        </Theme>
-    );
-  }
+function App() {
+  return <div className="App"><Router /></div>;
 }
 
 export default App;

@@ -63,3 +63,8 @@ Overview :
             Service Accounts :Admin API not configured
             ACLs : 0
     
+
+# Docker 
+
+Build : docker build -t my-app .   
+Run : docker run -d -p 3300:80 my-app

@@ -1,18 +1,16 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import Layout from "../../components/Layout/Layout";
 import JSONPretty from 'react-json-pretty';
 import {
   Breadcrumb,
   BreadcrumbItem,
   Grid,
   Column, Toggle, Search, FormGroup,IconButton,
-  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableSelectRow, TableToolbar,
-  TableBatchActions, TableBatchActionn, TableToolbarContent, TableBatchAction, TableToolbarSearch, TableToolbarMenu, TableExpandedRow, TableExpandHeader,
-  TableToolbarAction, Button, TableSelectAll, Stack, Section, Heading, Tile, Pagination, Checkbox, ContentSwitcher, Switch, TableExpandRow, CodeSnippet,
-  Modal, TextInput, SelectItem, Dropdown, Select, ToastNotification, InlineNotification, DataTableSkeleton, SkeletonText, SkeletonPlaceholder, Tab, Tabs, TabList
+  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableExpandedRow, TableExpandHeader, Button, Stack, Tile, Pagination, ContentSwitcher, Switch, TableExpandRow, Dropdown, ToastNotification, DataTableSkeleton, SkeletonText
 } from '@carbon/react';
 import { topicValueDetails, topicHeaderDetails } from './sampleData';
-import { TrashCan, Save, Download, Add, Trash, Renew, Send, Close} from '@carbon/react/icons';
+import { TrashCan, Save, Download, Add, Renew, Send, Close} from "@carbon/react/icons";
 
 import ReactJson from 'react-json-view'
 
@@ -55,18 +53,26 @@ const TopicDetails = () => {
     console.log('call fetch data ! ', limit);
     axios.get('http://localhost:8080/api/consume/'+topic+'/all?page=1&limit='+limit+'&clusterId=cluster1').then((response) => {
         console.log('--------> data ---> ', response.data);
-        setMessages(response.data.messages)
+        var initialArray = response.data.messages
+        const reversedArray = [...initialArray].reverse();
+        setMessages(reversedArray)
         //totalItems = response.data.totalResults;
-        allRows = response.data.messages;
+        allRows = reversedArray;
         setRows(paginate({ page: 1, pageSize: 5 }));
         SetMessageLoader(false)
-      });
+      }).catch(error => {
+        console.log("Axios handle error - ctash")
+     });;
   }
   useEffect(() => {
     axios.get('http://localhost:8080/api/topic/'+topic+'?clusterId=cluster1').then((response) => {
       setTopicDetails(response.data)
       SetIsLoading(false)
-    });
+    }).catch(error => {
+      console.log("Axios handle error - ctash")
+   }).catch(error => {
+    console.log("Axios handle error - ctash")
+ });;
     
     fetchMessages(limit);
   }, []);
@@ -81,7 +87,8 @@ const TopicDetails = () => {
   };
 
   return (
-    <Grid className="landing-page" fullWidth>
+    <Layout>
+     <div className="page-container">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
@@ -254,7 +261,7 @@ const TopicDetails = () => {
                           <TableExpandedRow
                             colSpan={headers.length + 3}
                             className="demo-expanded-td">
-                            <ReactJson src={JSON.stringify(row.cells[4].value)} />
+                            <ReactJson src={JSON.parse(row.cells[4].value)} />
                           </TableExpandedRow>
                         </React.Fragment>
                       ))}
@@ -302,8 +309,8 @@ const TopicDetails = () => {
           style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }
-    </Grid>
-
+    </div>
+    </Layout>
   );
 };
 

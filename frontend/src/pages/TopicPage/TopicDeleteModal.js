@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import ReactDOM from "react-dom"
-import { TrashCan, Save, Download, Add, Trash } from '@carbon/react/icons';
+import {  Save, Download, Add, TrashCan } from "@carbon/react/icons";
 import axios from 'axios';
 
 import {

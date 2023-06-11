@@ -1,11 +1,21 @@
-.login-btn {
-  width: 100%;
-  max-width: 100%;
-  padding-right: 20px;
-  margin-top: 12px;
-}
+.login-wrapper {
 
-.forgot-link {
-  font-size: 0.7rem;
-  text-decoration: underline;
+  margin-top: 2rem;
+  width: 400px;
+
+  .user-input {
+    margin: 1rem 0;
+  }
+
+  .login-btn {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 20px;
+    margin-top: 12px;
+  }
+
+  .forgot-link {
+    font-size: 0.7rem;
+    text-decoration: underline;
+  }
 }

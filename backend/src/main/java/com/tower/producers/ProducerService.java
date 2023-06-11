@@ -25,7 +25,8 @@ public class ProducerService {
     private final MessagesHelper messagesHelper;
 
     public void produce(String topicName, Message message, String clusterId) throws Exception {
-        messagesHelper.validateTopics(clusterId, singletonList(topicName));
+        System.out.println("Start producer !!");
+        //messagesHelper.validateTopics(clusterId, singletonList(topicName));
         KafkaTemplate<Bytes, Bytes> kafkaTemplate = kafkaConnectionService.getKafkaTemplate(clusterId);
         String key = message.getKey() != null ? message.getKey() : "";
         String value = message.getValue() != null ? message.getValue() : "";

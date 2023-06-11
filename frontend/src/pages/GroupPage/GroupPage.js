@@ -4,13 +4,16 @@ import {
   BreadcrumbItem,
   Grid,
   Column,
-  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableSelectRow, TableToolbar,
-  TableBatchActions, TableBatchActionn, TableToolbarContent, TableBatchAction, TableToolbarSearch, TableToolbarMenu,
-  TableToolbarAction, Button, TableSelectAll, Stack, Section, Heading, Tile, Pagination, Checkbox,
-  Modal, TextInput, SelectItem, Select, ToastNotification, InlineNotification,DataTableSkeleton,SkeletonText
+  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableToolbar,
+  TableBatchActions, TableToolbarContent, TableBatchAction, TableToolbarSearch, TableToolbarMenu,
+  Tile, Pagination, Checkbox,
+ ToastNotification,DataTableSkeleton,SkeletonText
 } from '@carbon/react';
 import { headerData, rowData } from './sampleData';
-import { TrashCan, Save, Download, Add, Trash } from '@carbon/react/icons';
+import { Save, Download, Add, TrashCan } from '@carbon/react/icons';
+
+
+import Layout from "../../components/Layout/Layout";
 
 
 import axios from 'axios';
@@ -44,7 +47,9 @@ const GroupPage = () => {
       setGroups(groups);
       allRows = groups;
       setRows(paginate({ page: 1, pageSize: 5 }));
-    });
+    }).catch(error => {
+      console.log("Axios handle error - ctash")
+   });
   }, []);
 
   const deletegroups = () => {
@@ -67,7 +72,8 @@ const GroupPage = () => {
   };
 
   return (
-    <Grid className="landing-page" fullWidth>
+    <Layout>
+    <div className="page-container">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
@@ -196,8 +202,8 @@ const GroupPage = () => {
           style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }
-    </Grid>
-
+    </div>
+      </Layout>
   );
 };
 

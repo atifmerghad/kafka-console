@@ -1,2 +1,52 @@
-// Bring in all the styles for Carbon
 @use '@carbon/react';
+@use "./pages/Login/Login";
+@use "./components/Layout/Layout";
+@use "./components/LoginLayout/LoginLayout";
+
+
+:root {
+    --color-white: #fff;
+    --color-light-white: #c6c6c6;
+    --color-black: #000;
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #353535;
+  }
+
+  html, #root, .App {
+    height: 100vh;
+  }
+.page{
+  margin-top: 20px;
+}
+
+.line-overflow{
+  max-width: 45rem;  
+  overflow: hidden;  
+  white-space: nowrap;  
+  text-overflow: ellipsis;  
+  font-size: 95%;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.dashboardRightSection {
+  background-color: #262626;
+  color: var(--color-white);
+  padding: 20px;
+  // padding: 25px 17px;
+  display: flex;
+  flex-flow: column;
+
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
+}
+
+.dashboardNumber {
+  margin-bottom: 10px;
+  font-size: 42px;
+  font-weight: 300;
+
+  span {
+    font-size: 28px;
+  }
+}

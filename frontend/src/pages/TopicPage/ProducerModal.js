@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState,useRef } from 'react';
 import ReactDOM from "react-dom"
-import { TrashCan, Save, Download, Add, Trash } from '@carbon/react/icons';
+import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 import axios from 'axios';
 import Editor from "@monaco-editor/react";
 
@@ -55,7 +55,7 @@ const ProducerModal = ({ open, setOpenModal, setNotify }) => {
             }
           };
         console.log("value -----> : ",payload);
-        axios.post('http://localhost:8080/api/producer/produce/atif_topic/1?clusterId=cluster1',payload,config).then((response) => {
+        axios.post('http://localhost:8080/api/producer/produce/test-topic/1?clusterId=cluster1',payload,config).then((response) => {
             console.log('topic response : ', response);
             if (response.data = 200) {
                 setOpenModal(false);
@@ -85,8 +85,8 @@ const ProducerModal = ({ open, setOpenModal, setNotify }) => {
                                 id="default"
                                 titleText="TOPICS"
                                 label="All"
-                                items={['atif-topic', 'test', 'topic-x', 'time-topic-1']}
-                                initialSelectedItem={'test'}
+                                items={['test-topic', 'test', 'topic-x', 'time-topic-1']}
+                                initialSelectedItem={'test-topic'}
                                 itemToString={(item) => (item ? item : '')}
                             />
                         </div>

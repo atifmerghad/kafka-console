@@ -10,7 +10,7 @@ import {
   Modal, TextInput, SelectItem, Select, ToastNotification, InlineNotification,TableExpandRow,TableExpandHeader,DataTableSkeleton,SkeletonText
 } from '@carbon/react';
 import { headerData, rowData } from './sampleData';
-import { TrashCan, Save, Download, Add, Trash } from '@carbon/react/icons';
+import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 
 import Svg from '../../components/Svg'
 
@@ -37,7 +37,9 @@ const SecurityPage = () => {
       setAcls(acls);
       allRows = acls;
       setRows(paginate({ page: 1, pageSize: 10 }));
-    });
+    }).catch(error => {
+      console.log("Axios handle error - ctash")
+   });
   }, []);
 
   const paginate = ({ page, pageSize }) => {
@@ -47,7 +49,7 @@ const SecurityPage = () => {
   };
 
   return (
-    <Grid className="landing-page" fullWidth>
+    <div className="page-container">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
@@ -160,7 +162,7 @@ const SecurityPage = () => {
           style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }
-    </Grid>
+    </div>
 
   );
 };

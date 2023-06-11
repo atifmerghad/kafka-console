@@ -10,11 +10,12 @@ import {
     Search,
     Switcher,
     Fade,
-} from '@carbon/react/icons';
-import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
+} from '@carbon/icons-react';
+//import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import ErrorBoundary from "../../components/ErrorBoundary";
-import LandingPage from '../LandingPage';
+import Overview from '../Overview';
 import BrokerPage from '../BrokerPage';
 import TopicPage from '../TopicPage';
 import TopicDetails from '../TopicPage/TopicDetails';
@@ -39,7 +40,7 @@ class UIShell extends React.Component {
     render() {
         return (
          
-            <BrowserRouter >
+           // <BrowserRouter >
                <Theme > 
                     <HeaderContainer
                         render={({ isSideNavExpanded, onClickSideNavExpand }) => (
@@ -172,9 +173,10 @@ class UIShell extends React.Component {
                             </div>
                         )}
                     />
+                {/*
                 <Content className={this.isDark?'content dark':'content light'} >
                     <Routes>
-                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/" element={<Overview />} />
                         <Route path="/brokers" element={<BrokerPage/>} />
                         <Route path="/topics" element={<TopicPage />} />
                         <Route path="/topic-details" element={<TopicDetails />} />
@@ -187,8 +189,9 @@ class UIShell extends React.Component {
                         <Route path="/*" element={<NotFound />} />                       
                     </Routes>
                 </Content>
+                */}
                 </Theme>
-            </BrowserRouter> 
+          //  </BrowserRouter> 
           
         );
     }

@@ -1,19 +1,18 @@
 tower:
   clusters:
     - name: cluster1
-      bootstrap-servers: "pkc-6ojv2.us-west4.gcp.confluent.cloud:9092"
-      username: DMPZETAYAA5A2QW6
-      password: mdXVzeyKWidTU/2vWTsphBnRcJoU00DKM5gdMuWJs0s9U6Y4tbqsOTFR7a7+qcAn
+      bootstrap-servers: "pkc-ymrq7.us-east-2.aws.confluent.cloud:9092"
+      username: 5IANTUPVXWP4BYDB
+      password: Nda4EciuGeB8ho/oHCxs0V170dQ1hxD4dGeYjFtUpwB4LYsoS3uTEj08Ud8Pb0t7
       protocol: SASL_SSL
       mechanism: PLAIN 
     - name: cluster2
-      bootstrap-servers: "pkc-6ojv2.us-west4.gcp.confluent.cloud:9092"
-      username: DMPZETAYAA5A2QW6
-      password: mdXVzeyKWidTU/2vWTsphBnRcJoU00DKM5gdMuWJs0s9U6Y4tbqsOTFR7a7+qcAn
+      bootstrap-servers: "pkc-ymrq7.us-east-2.aws.confluent.cloud:9092"
+      username: 5IANTUPVXWP4BYDB
+      password: Nda4EciuGeB8ho/oHCxs0V170dQ1hxD4dGeYjFtUpwB4LYsoS3uTEj08Ud8Pb0t7
       protocol: SASL_SSL
       mechanism: PLAIN 
     
 
 topics:
     exclude-regex-patterns: __.*
-

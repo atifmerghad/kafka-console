@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Layout from "../../components/Layout/Layout";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +12,7 @@ import {
   Modal, TextInput, SelectItem, Select, ToastNotification,InlineNotification,DataTableSkeleton,SkeletonText,SkeletonPlaceholder
 } from '@carbon/react';
 import { headerData, rowData } from './sampleData';
-import { TrashCan, Save, Download, Add, Trash } from '@carbon/react/icons';
+import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 
 import TopicModal from './TopicModal';
 import TopicDeleteModal from './TopicDeleteModal';
@@ -51,7 +51,9 @@ const TopicPage = () => {
       setTopics(response.data.topics);
       allRows = topics;
       setRows(paginate({ page: 1, pageSize: 10 }));
-    });
+    }).catch(error => {
+      console.log("Axios handle error - ctash")
+   });
   }, []);
 
   const deleteTopic = (topicName)=> {
@@ -74,7 +76,8 @@ const TopicPage = () => {
   };
 
   return (
-    <Grid className="landing-page" fullWidth>
+    <Layout>
+    <div className="page-container">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
@@ -209,8 +212,8 @@ const TopicPage = () => {
             style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }
-    </Grid>
-    
+    </div>
+    </Layout>
   );
 };
 
