@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.tower.config.AppConfig;
+import com.app.kafka.config.AppConfig;
 
 @CrossOrigin(origins = "*")
 @SpringBootApplication

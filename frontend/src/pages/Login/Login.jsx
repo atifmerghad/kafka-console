@@ -23,13 +23,13 @@ const Login = () => {
 
   useEffect(() => {
     console.log("isaccount updates ", isAccount);
-    if (!isAccount) {
+    if (isAccount === true) {
       completeLogin();
     }
     return () => setIsAsyncInProgress(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAccount, errorResponse]);
-
+  
   const handleKafkaConsoleIDChange = (e) => {
     setInvalidEmail(false);
     setErrorResponse(false);
@@ -38,7 +38,7 @@ const Login = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      //handleLogin();
+      handleLogin();
     }
   };
 
@@ -47,21 +47,22 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    navigate(routes.DASHBOARD);
     login({
-      username: userEmail,
+      email: userEmail,
       password: userPassword,
     });
   };
 
   const completeLogin = () => {
-   // navigate(routes.DASHBOARD);
+    //navigate(routes.DASHBOARD);
+    window.location.replace(routes.DASHBOARD);
   };
 
   const onErrorClose = () => {
     setUserEmail("");
     setUserPassword("");
   };
+
 
   return (
     <LoginLayout>

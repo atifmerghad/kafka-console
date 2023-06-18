@@ -8,6 +8,7 @@ import java.util.Date;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -46,7 +47,9 @@ public class JwtUtils {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return createToken(Map.of(), userDetails);
+        //Map.of()
+        Map<String,Object> claims = new HashMap<>();
+        return createToken(claims, userDetails);
     }
 
     public String generateToken(UserDetails userDetails, Map<String, Object> claims) {

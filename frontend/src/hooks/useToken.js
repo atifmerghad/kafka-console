@@ -10,12 +10,12 @@ const useToken = () => {
     async (credentials) => {
       // console.log(credentials);
       setErrorResponse({});
-      return await clientToken.post("/auth/login", credentials);
+      return await clientToken.post("/api/v1/auth/authenticate", credentials);
     },
     {
       onSuccess: (res) => {
-        // console.log(res);
-        localStorage.setItem("kafka-console-auth-token", res.data.token);
+        console.log("token : ",res);
+        localStorage.setItem("kafka-console-auth-token", res.data); //token
         setIsAccount(true);
       },
       onError: (err) => {
