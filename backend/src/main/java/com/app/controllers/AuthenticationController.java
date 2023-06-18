@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import com.app.config.JwtUtils;
 import com.app.dao.UserDao;
 import com.app.dto.AuthenticationRequest;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -30,6 +29,7 @@ public class AuthenticationController {
 
     @PostMapping("/api/v1/greetings")
     public ResponseEntity<String> hello(@RequestBody AuthenticationRequest request) {
+        System.out.println("request Username "+request.getEmail());
         request.setEmail("atif@gmail.com");
         request.setPassword("1234");
         return ResponseEntity.ok("Email : "+ request.getEmail());
@@ -37,10 +37,7 @@ public class AuthenticationController {
 
     @PostMapping("/api/v1/auth/authenticate")
     public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest request){
-        request.setEmail("atif@gmail.com");
-        request.setPassword("1234");
-        System.out.println("----------> Start ------------ :"+request.getEmail()+" - "+ request.getPassword());
-
+        System.out.println("request Username: "+request.getEmail());
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
