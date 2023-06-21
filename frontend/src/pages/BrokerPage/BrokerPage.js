@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import Layout from "../../components/Layout/Layout";
 
+import { apiClient } from "../../utils/client";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,7 +15,6 @@ import { headerData, rowData } from './sampleData';
 
 import Svg from '../../components/Svg'
 
-import axios from 'axios';
 
 const BrokerPage = () => {
 
@@ -26,10 +27,11 @@ const BrokerPage = () => {
   const [version, setVersion] = useState("");
   const [notify, setNotify] = useState(false);
 
+  
   var allRows = brokers;
 
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/brokers?clusterId=cluster1').then((response) => {
+  useEffect(() => { 
+    apiClient.get('http://localhost:8080/api/brokers?clusterId=cluster1').then((response) => {
       var version = response.data.version;
       var brokers = response.data.brokers;
       var controllerId = response.data.controllerId;

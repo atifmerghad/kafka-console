@@ -7,6 +7,7 @@ import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
@@ -38,12 +39,16 @@ public class AuthenticationController {
     @PostMapping("/api/v1/auth/authenticate")
     public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest request){
         System.out.println("request Username: "+request.getEmail());
-        authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
-
-        System.out.println("Try to find user : ");
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            );
+        }
+        catch (Exception e) {
+            System.out.println("authenticationManager Exception : "+ e);
+        }
         final UserDetails  user = userDao.findUserByEmail(request.getEmail());
+        System.out.println("Try to find user : "+ user);
         if(user != null){
             System.out.println("user defined !"+ user.getUsername());
             System.out.println("generateToken : "+ jwtUtils.generateToken(user));

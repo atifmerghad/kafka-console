@@ -19,8 +19,8 @@ const useToken = () => {
         setIsAccount(true);
       },
       onError: (err) => {
-        console.log(err, err.response.data);
-        setErrorResponse(err.response.data);
+        console.log(err.message, err.response.data);
+        setErrorResponse(err);
         setIsAccount(false);
         localStorage.setItem(null);
       },

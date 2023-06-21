@@ -19,7 +19,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.app.dao.UserDao;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+
+import java.util.Arrays;
 
 
 @EnableWebSecurity
@@ -27,10 +32,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final UserDao userDao;
-    
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http
                 .authorizeRequests()
                 .antMatchers("/**/auth/**")
                 .permitAll()
@@ -41,10 +46,10 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .csrf().disable().cors(cors -> cors.disable());
         return http.build();
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider(){

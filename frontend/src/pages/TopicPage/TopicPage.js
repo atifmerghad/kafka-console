@@ -17,7 +17,8 @@ import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 import TopicModal from './TopicModal';
 import TopicDeleteModal from './TopicDeleteModal';
 
-import axios from 'axios';
+import { apiClient } from "../../utils/client";
+
 
 const TopicPage = () => {
   const showHeaders = true;
@@ -35,7 +36,7 @@ const TopicPage = () => {
   var allRows = topics;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/topics?clusterId=cluster1').then((response) => {
+    apiClient.get('http://localhost:8080/api/topics?clusterId=cluster1').then((response) => {
       var topics = response.data.topics
       var count = 0;
       SetIsLoading(false)
