@@ -5,15 +5,15 @@ import routes from "./routes";
 
 const Login = React.lazy(() => import("../pages/Login/Login"));
 const Overview = React.lazy(() => import("../pages/Overview/Overview"));
-const BrokerPage = React.lazy(() => import("../pages/BrokerPage/BrokerPage"));
-const TopicPage = React.lazy(() => import("../pages/TopicPage/TopicPage"));
-const TopicDetails = React.lazy(() => import("../pages/TopicPage/TopicDetails"));
-const ShemaPage = React.lazy(() => import("../pages/MetricPage/MetricPage"));
-const ConnectPage = React.lazy(() => import("../pages/MetricPage/MetricPage"));
-const Metric = React.lazy(() => import("../pages/MetricPage/MetricPage"));
-const Security = React.lazy(() => import("../pages/MetricPage/MetricPage"));
-const Track = React.lazy(() => import("../pages/MetricPage/MetricPage"));
-const ConsumerGroup = React.lazy(() => import("../pages/GroupPage/GroupPage"));
+const Brokers = React.lazy(() => import("../pages/Brokers/Brokers"));
+const Topics = React.lazy(() => import("../pages/Topics/Topics"));
+const TopicDetails = React.lazy(() => import("../pages/Topics/TopicDetails"));
+const ShemaPage = React.lazy(() => import("../pages/Metrics/Metrics"));
+const ConnectPage = React.lazy(() => import("../pages/Metrics/Metrics"));
+const Metric = React.lazy(() => import("../pages/Metrics/Metrics"));
+const Security = React.lazy(() => import("../pages/Metrics/Metrics"));
+const Track = React.lazy(() => import("../pages/Metrics/Metrics"));
+const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
 
 export function LoadingScreen() {
   return (
@@ -53,7 +53,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <BrokerPage />
+              <Brokers />
             </React.Suspense>
           }
           path={routes.BROKERS}
@@ -61,7 +61,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-                <TopicPage />
+                <Topics />
             </React.Suspense>
           }
           path={routes.TOPICS}

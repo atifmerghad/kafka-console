@@ -6,7 +6,7 @@ const routes = {
     TOPIC_DETAILS: "/topic-details",
     SCHEMA: "/schemas",
     CONSUMERS: "/consumers",
-    GROUPS: "groups",
+    GROUPS: "/groups",
     METRIC: "/metrics",
     SECURITY: "/security",
     CONNECTOR: "/connectors",

@@ -16,12 +16,12 @@ import { Link } from 'react-router-dom';
 
 import ErrorBoundary from "../../components/ErrorBoundary";
 import Overview from '../Overview';
-import BrokerPage from '../BrokerPage';
-import TopicPage from '../TopicPage';
-import TopicDetails from '../TopicPage/TopicDetails';
-import MetricPage from '../MetricPage';
-import GroupPage from '../GroupPage';
-import SecurityPage from '../SecurityPage';
+import Brokers from '../Brokers';
+import Topics from '../Topics';
+import TopicDetails from '../Topics/TopicDetails';
+import Metrics from '../Metrics';
+import Groups from '../Groups';
+import Security from '../Security';
 import NotFound from '../../components/NotFound';
 import NotConfigured from '../../components/NotConfigured';
 
@@ -177,12 +177,12 @@ class UIShell extends React.Component {
                 <Content className={this.isDark?'content dark':'content light'} >
                     <Routes>
                         <Route path="/" element={<Overview />} />
-                        <Route path="/brokers" element={<BrokerPage/>} />
-                        <Route path="/topics" element={<TopicPage />} />
+                        <Route path="/brokers" element={<Brokers/>} />
+                        <Route path="/topics" element={<Topics />} />
                         <Route path="/topic-details" element={<TopicDetails />} />
-                        <Route path="/groups" element={<GroupPage />} />
-                        <Route path="/metrics" element={<MetricPage />} />  
-                        <Route path="/security" element={<SecurityPage />} />    
+                        <Route path="/groups" element={<Groups />} />
+                        <Route path="/metrics" element={<Metrics />} />  
+                        <Route path="/security" element={<Security />} />    
                         <Route path="/schemas" element={<NotConfigured serviceName={'Schema Registry'} />} />
                         <Route path="/connectors" element={<NotConfigured serviceName={'Kafka Connect'} />} />
                         <Route path="/track" element={<NotFound />} />

@@ -16,7 +16,7 @@ import Svg from '../../components/Svg'
 
 import { apiClient } from "../../utils/client";
 
-const SecurityPage = () => {
+const Security = () => {
 
   const showHeaders = true;
   const [isLoading, SetIsLoading] = useState(true);
@@ -167,4 +167,4 @@ const SecurityPage = () => {
   );
 };
 
-export default SecurityPage;
+export default Security;

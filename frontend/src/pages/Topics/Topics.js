@@ -1,71 +1,76 @@
 import React, { Component, useEffect, useState } from 'react';
-import { 
+import { useNavigate } from 'react-router-dom';
+import Layout from "../../components/Layout/Layout";
+import {
   Breadcrumb,
   BreadcrumbItem,
   Grid,
   Column,
-  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableToolbar,
-  TableBatchActions, TableToolbarContent, TableBatchAction, TableToolbarSearch, TableToolbarMenu,
-  Tile, Pagination, Checkbox,
- ToastNotification,DataTableSkeleton,SkeletonText
+  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableSelectRow, TableToolbar,
+  TableBatchActions, TableBatchActionn, TableToolbarContent, TableBatchAction, TableToolbarSearch, TableToolbarMenu,
+  TableToolbarAction, Button, TableSelectAll, Stack, Section, Heading, Tile, Pagination, Checkbox,Link,
+  Modal, TextInput, SelectItem, Select, ToastNotification,InlineNotification,DataTableSkeleton,SkeletonText,SkeletonPlaceholder
 } from '@carbon/react';
 import { headerData, rowData } from './sampleData';
-import { Save, Download, Add, TrashCan } from '@carbon/react/icons';
+import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 
-
-import Layout from "../../components/Layout/Layout";
+import TopicModal from './TopicModal';
+import TopicDeleteModal from './TopicDeleteModal';
 
 import { apiClient } from "../../utils/client";
 
- 
-const GroupPage = () => {
-  
+
+const Topics = () => {
+  const showHeaders = true;
   const [isLoading, SetIsLoading] = useState(true);
   const [rows, setRows] = useState([]);
-  const [groups, setGroups] = useState([]);
+  const [topics, setTopics] = useState([]);
   const [partitions, setPartitions] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openTopicDeleteModal, setOpenTopicDeleteModal] = useState(false);
   const [notify, setNotify] = useState(false);
+  const [topicName, setTopicName] = useState(false);
+  const navigate = useNavigate();
 
-  var allRows = groups;
 
-  const showHeaders = true;
+  var allRows = topics;
+
   useEffect(() => {
-    apiClient.get('http://localhost:8080/api/consumer-groups?clusterId=cluster1').then((response) => {
-      console.log("response :",response);
-      var groups = response.data//.consumerGroups
+    apiClient.get('http://localhost:8080/api/topics?clusterId=cluster1').then((response) => {
+      var topics = response.data.topics
       var count = 0;
       SetIsLoading(false)
-      if (groups.length > 0) {
-       
-        groups.forEach((element, i) => {
-          groups[i]['id'] = element.groupId;
-          count = 0;
+      if (topics.length > 0) {
+
+        topics.forEach((element, i) => {
+          topics[i]['id'] = element.topicName;  
+          topics[i]['action'] = <TrashCan onClick={()=>{deleteTopic(element.topicName)}}/>;
+          count = count + topics[i].partitionCount;
         });
       }
       setPartitions(count);
-      setGroups(groups);
-      allRows = groups;
-      setRows(paginate({ page: 1, pageSize: 5 }));
+      setTopics(response.data.topics);
+      allRows = topics;
+      setRows(paginate({ page: 1, pageSize: 10 }));
     }).catch(error => {
       console.log("Axios handle error - ctash")
    });
   }, []);
 
-  const deletegroups = () => {
-    console.log("delete groups ");
+  const deleteTopic = (topicName)=> {
+    setTopicName(topicName);
+    setOpenTopicDeleteModal(true);
   }
 
-  const savegroups = () => {
-    console.log("savegroups groups ");
+  const saveTopics = () => {
+    console.log("saveTopics topics ");
   }
 
-  const downloadgroups = () => {
-    console.log("downloadgroups groups ");
+  const downloadTopics = () => {
+    console.log("downloadTopics topics ");
   }
 
   const paginate = ({ page, pageSize }) => {
-    console.log("call paginate - page : ", page, " pageSize : ", pageSize, " length : ", allRows.length);
     const start = (page - 1) * pageSize;
     const end = page * pageSize;
     return allRows.slice(start, end);
@@ -80,22 +85,23 @@ const GroupPage = () => {
             <a href="/">Cluster</a>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <a href="/">Consumer Groups</a> 
+            <a href="/topics">Topics</a>
           </BreadcrumbItem>
         </Breadcrumb>
       </Column>
+
       <Column lg={16} md={8} sm={4} className="landing-page__r2" style={{ marginBottom: '1rem' }}>
-        <Tile lg={4} md={4} sm={4}>
-          <Grid>
-            <Column lg={2} md={8} sm={4}>Total Groups <br />   {isLoading && <SkeletonText />} {!isLoading &&  <h3>  {groups.length}</h3>} </Column>
-            <Column lg={8} md={8} sm={4}>Stable <br />  {isLoading && <SkeletonText />} {!isLoading &&  <h3>  {groups.length}</h3>}   </Column>
-          </Grid>
-        </Tile>
+      <Tile  lg={4} md={4} sm={4}>
+        <Grid>
+          <Column  lg={2} md={8} sm={4}>Total Topics <br/>  {isLoading && <SkeletonText />}  {!isLoading && <h3>{topics.length} </h3>}</Column>
+          <Column  lg={8} md={8} sm={4}>Partitions Details <br/> {isLoading && <SkeletonPlaceholder />} {!isLoading &&  <div style={{borderLeft: '2px solid #cccccc',paddingLeft: '10px'}}><span>Primary : {partitions} <br/>Replicated : 2 <br/>All : 65</span></div>}</Column>
+        </Grid>
+       </Tile>
       </Column>
       <Column lg={16} md={8} sm={4} className="landing-page__r2">
-        {isLoading &&  <DataTableSkeleton headers={showHeaders ? headerData : null} />}
-        {!isLoading && 
-        <div>
+      {isLoading &&  <DataTableSkeleton headers={showHeaders ? headerData : null} />}
+      {!isLoading &&  
+      <div>
         <DataTable rows={rows} headers={headerData} >
           {({
             rows,
@@ -106,6 +112,7 @@ const GroupPage = () => {
             getBatchActionProps,
             onInputChange,
             selectedRows,
+            getLinkProps
           }) => (
             <TableContainer>
               <TableToolbar>
@@ -113,21 +120,21 @@ const GroupPage = () => {
                   <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
                     renderIcon={TrashCan}
-                    onClick={deletegroups}
+                    onClick={deleteTopic}
                   >
                     Delete
                   </TableBatchAction>
                   <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
                     renderIcon={Save}
-                    onClick={savegroups}
+                    onClick={saveTopics}
                   >
                     Save
                   </TableBatchAction>
                   <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
                     renderIcon={Download}
-                    onClick={downloadgroups}
+                    onClick={downloadTopics}
                   >
                     Download
                   </TableBatchAction>
@@ -140,9 +147,10 @@ const GroupPage = () => {
                   <TableToolbarMenu
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
                   >
-                    <Checkbox labelText={`Internal groups`} id="checkbox-label-1" />
+                    <Checkbox labelText={`Internal topics`} id="checkbox-label-1" />
                   </TableToolbarMenu>
 
+                  <Button renderIcon={Add} iconDescription="Add" size="sm" kind="primary" onClick={() => {setOpen(true);setNotify(false)}}>Create Topic</Button>
                 </TableToolbarContent>
               </TableToolbar>
               <Table>
@@ -159,7 +167,9 @@ const GroupPage = () => {
                   {rows.map((row) => (
                     <TableRow {...getRowProps({ row })}>
                       {row.cells.map((cell) => (
-                        <TableCell key={cell.id}>{cell.value}</TableCell>
+                        
+                         (cell.id == row.id+':topicName')?<TableCell key={cell.id} onClick={(e)=>{ navigate('/topic-details?topic='+cell.value);}}>{cell.value}</TableCell>:
+                         <TableCell key={cell.id}>{cell.value}</TableCell>
                       ))}
                     </TableRow>
                   ))}
@@ -179,32 +189,33 @@ const GroupPage = () => {
           pageNumberText="Page Number"
           pageSize={10}
           pageSizes={[
+            5,
             10,
             20,
             30,
             40,
             50
           ]}
-          totalItems={groups.length}
+          totalItems={topics.length}
           size="md"
         />
-        </div>
-        }
-
+    </div>}
       </Column>
 
-      {notify &&
-        <ToastNotification
-          title='Topic created seccusfuly'
-          subtitle=''
-          timeout="5000"
-          kind="success"
-          style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
+      {openTopicDeleteModal && <TopicDeleteModal  open={true}  topicName={topicName} setOpenTopicDeleteModal={setOpenTopicDeleteModal} />}
+      {open && <TopicModal  open={open} setOpenModal={setOpen} setNotify={setNotify} />}
+      {notify && 
+      <ToastNotification
+            title='Topic created seccusfuly'
+            subtitle=''
+            timeout="5000"
+            kind="success"
+            style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }
     </div>
-      </Layout>
+    </Layout>
   );
 };
 
-export default GroupPage;
+export default Topics;

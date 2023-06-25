@@ -16,7 +16,7 @@ import { headerData, rowData } from './sampleData';
 import Svg from '../../components/Svg'
 
 
-const BrokerPage = () => {
+const Brokers = () => {
 
   const showHeaders = true;
 
@@ -169,4 +169,4 @@ const BrokerPage = () => {
   );
 };
 
-export default BrokerPage;
+export default Brokers;

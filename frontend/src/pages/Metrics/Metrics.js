@@ -6,7 +6,7 @@ import "@carbon/charts/styles.css";
 import Layout from "../../components/Layout/Layout";
 
 
-const MetricPage = () => {
+const Metrics = () => {
 	const  state = {
 		data: [
 	{
@@ -148,4 +148,4 @@ const MetricPage = () => {
 	);
 }
 
-export default MetricPage;
+export default Metrics;
