@@ -20,7 +20,7 @@ import SaveModal from './SaveModal';
 
 import Svg from '../../components/Svg'
 
-import axios from 'axios';
+import { apiClient } from "../../utils/client";
 
 const TopicDetails = () => {
 
@@ -51,7 +51,7 @@ const TopicDetails = () => {
   const fetchMessages = (limit) =>{
     SetMessageLoader(true);
     console.log('call fetch data ! ', limit);
-    axios.get('http://localhost:8080/api/consume/'+topic+'/all?page=1&limit='+limit+'&clusterId=cluster1').then((response) => {
+    apiClient.get('http://localhost:8080/api/consume/'+topic+'/all?page=1&limit='+limit+'&clusterId=cluster1').then((response) => {
         console.log('--------> data ---> ', response.data);
         var initialArray = response.data.messages
         const reversedArray = [...initialArray].reverse();
@@ -65,7 +65,7 @@ const TopicDetails = () => {
      });;
   }
   useEffect(() => {
-    axios.get('http://localhost:8080/api/topic/'+topic+'?clusterId=cluster1').then((response) => {
+    apiClient.get('http://localhost:8080/api/topic/'+topic+'?clusterId=cluster1').then((response) => {
       setTopicDetails(response.data)
       SetIsLoading(false)
     }).catch(error => {
@@ -78,6 +78,12 @@ const TopicDetails = () => {
   }, []);
 
   
+  const searchTopic = (e) => {
+
+    setRows(allRows.filter(r => r.value.includes(e.target.value)));
+    console.log("search in topic : ", e.target.value, allRows.filter(r => r.value.includes(e.target.value)));
+
+  }
 
   const paginate = ({ page, pageSize }) => {
     console.log("call paginate - page : ", page, " pageSize : ", pageSize, " length : ", allRows.length);
@@ -211,7 +217,7 @@ const TopicDetails = () => {
             labelText="Search"
             closeButtonLabelText="Clear search input"
             id="search-1"
-            onChange={() => { }}
+            onChange={searchTopic}
             onKeyDown={() => { }} />
             </div>
           </Stack>

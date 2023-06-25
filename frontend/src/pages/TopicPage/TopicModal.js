@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import ReactDOM from "react-dom"
 import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
-import axios from 'axios';
+import { apiClient } from "../../utils/client";
 
 import {
     Grid,
@@ -22,7 +22,7 @@ const TopicModal = ({open,setOpenModal,setNotify}) => {
     console.log("topic : ",topicName);
     setLoad(true);
     console.log("new topic : ", topicName, partitions);
-    axios.post('http://localhost:8080/api/topic?clusterId=cluster1',
+    apiClient.post('http://localhost:8080/api/topic?clusterId=cluster1',
     {
         topicName: topicName
     }

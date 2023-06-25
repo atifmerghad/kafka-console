@@ -15,9 +15,9 @@ import { Save, Download, Add, TrashCan } from '@carbon/react/icons';
 
 import Layout from "../../components/Layout/Layout";
 
+import { apiClient } from "../../utils/client";
 
-import axios from 'axios';
-
+ 
 const GroupPage = () => {
   
   const [isLoading, SetIsLoading] = useState(true);
@@ -31,7 +31,7 @@ const GroupPage = () => {
 
   const showHeaders = true;
   useEffect(() => {
-    axios.get('http://localhost:8080/api/consumer-groups?clusterId=cluster1').then((response) => {
+    apiClient.get('http://localhost:8080/api/consumer-groups?clusterId=cluster1').then((response) => {
       console.log("response :",response);
       var groups = response.data//.consumerGroups
       var count = 0;

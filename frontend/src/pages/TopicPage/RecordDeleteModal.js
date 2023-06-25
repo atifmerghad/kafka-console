@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import ReactDOM from "react-dom"
 import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
-import axios from 'axios';
+import { apiClient } from "../../utils/client";
 
 import {
     Grid,
@@ -17,7 +17,7 @@ const RecordDeleteModal = ({ topicName, openModal, setOpenModal }) => {
 
     const deleteTopic = (topicName, setOpenModal) => {
         if (name == topicName) {
-            axios.delete('http://localhost:8080/api/topic/' + topicName + '?clusterId=cluster1')
+            apiClient.delete('http://localhost:8080/api/topic/' + topicName + '?clusterId=cluster1')
                 .then(response => {
                     console.log("response.data : ", response.status == 200);
                     if (response.status == 200) {

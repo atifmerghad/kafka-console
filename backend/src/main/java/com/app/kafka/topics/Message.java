@@ -21,4 +21,5 @@ public class Message {
     private int partition;
     private long offset;
     private String topic;
+    
 }

@@ -29,7 +29,7 @@ const navMenuLinks = [
     key: "dashboard",
     title: "Dashboard",
     icon: Analytics,
-    // link: routes.DASHBOARD, //TODO: update route
+    link: routes.DASHBOARD, //TODO: update route
     divider: true,
   },
   {
@@ -49,31 +49,31 @@ const navMenuLinks = [
     key: "manage-assets",
     title: "Schema Registry",
     icon: IotConnect,
-    link: routes.MANAGEASSETS,
+    link: routes.SCHEMA,
   },
   {
     key: "manage-users",
     title: "Connectors",
     icon: UserRole,
-    // link: routes.MANAGEUSERS, //TODO: update route
+    link: routes.CONNECTOR, //TODO: update route
   },
   {
     key: "manage-users",
     title: "Security",
     icon: UserRole,
-    // link: routes.MANAGEUSERS, //TODO: update route
+    link: routes.SECURITY, //TODO: update route
   },
   {
     key: "manage-tools",
     title: "Track",
     icon: Analytics,
-    // link: routes.MANAGEUSERS, //TODO: update route
+    link: routes.TRACK, //TODO: update route
   },
   {
     key: "dashboard",
     title: "Advanced Tools",
     icon: IotConnect,
-    // link: routes.MANAGEUSERS, //TODO: update route
+    link: routes.TOOLS, //TODO: update route
   },
 ];
 

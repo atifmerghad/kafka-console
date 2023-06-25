@@ -13,5 +13,6 @@ const routes = {
     KSQLDB: "/ksqldb",
     STREAM: "/streams",
     TRACK: "/track",
+    TOOLS: "/tools",
   };
   export default routes;

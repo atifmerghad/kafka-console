@@ -14,7 +14,7 @@ import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 
 import Svg from '../../components/Svg'
 
-import axios from 'axios';
+import { apiClient } from "../../utils/client";
 
 const SecurityPage = () => {
 
@@ -26,7 +26,7 @@ const SecurityPage = () => {
   var allRows = acls;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/acls/?clusterId=cluster1').then((response) => {
+    apiClient.get('http://localhost:8080/api/acls/?clusterId=cluster1').then((response) => {
       var acls = response.data;
       SetIsLoading(false);
       if (acls.length > 0) {

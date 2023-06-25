@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState,useRef } from 'react';
 import ReactDOM from "react-dom"
 import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
-import axios from 'axios';
+import { apiClient } from "../../utils/client";
 import Editor from "@monaco-editor/react";
 
 import {
@@ -55,7 +55,7 @@ const ProducerModal = ({ open, setOpenModal, setNotify }) => {
             }
           };
         console.log("value -----> : ",payload);
-        axios.post('http://localhost:8080/api/producer/produce/test-topic/1?clusterId=cluster1',payload,config).then((response) => {
+        apiClient.post('http://localhost:8080/api/producer/produce/test-topic?clusterId=cluster1',payload).then((response) => {
             console.log('topic response : ', response);
             if (response.data = 200) {
                 setOpenModal(false);
