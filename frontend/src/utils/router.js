@@ -13,6 +13,7 @@ const ConnectPage = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Metric = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Security = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Track = React.lazy(() => import("../pages/Metrics/Metrics"));
+const Tools = React.lazy(() => import("../pages/Tools/Tools"));
 const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
 
 export function LoadingScreen() {
@@ -117,7 +118,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <Metric />
+             <Tools />
             </React.Suspense>
           }
           path={routes.KSQLDB}
@@ -125,10 +126,18 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <Metric />
+              <Tools />
             </React.Suspense>
           }
           path={routes.TRACK}
+        ></Route>
+         <Route
+          element={
+            <React.Suspense fallback={<LoadingScreen />}>
+              <Tools />
+            </React.Suspense>
+          }
+          path={routes.TOOLS}
         ></Route>
       </Routes>
     </BrowserRouter>

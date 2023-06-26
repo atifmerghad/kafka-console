@@ -11,7 +11,7 @@ import {
   Column,
   DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, Tile, Pagination,ToastNotification,TableExpandRow,TableExpandHeader,DataTableSkeleton,SkeletonText, Theme
 } from '@carbon/react';
-import { headerData, rowData } from './sampleData';
+import { headerData } from './sampleData';
 
 import Svg from '../../components/Svg'
 
