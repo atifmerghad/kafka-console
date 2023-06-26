@@ -10,7 +10,7 @@ import {
     Modal, TextInput, SelectItem, Select, NumberInput, Row, Loading
 } from '@carbon/react';
 
-const ProducerModal = ({ open, setOpenModal, setNotify }) => {
+const ProducerModal = ({ open, setOpenModal, setNotify, setMessages }) => {
 
     const [topicName, setTopicName] = useState('');
     const [partitions, setPartitions] = useState(1);
@@ -56,9 +56,12 @@ const ProducerModal = ({ open, setOpenModal, setNotify }) => {
           };
         console.log("value -----> : ",payload);
         apiClient.post('http://localhost:8080/api/producer/produce/test-topic?clusterId=cluster1',payload).then((response) => {
-            console.log('topic response : ', response);
-            if (response.data = 200) {
+            console.log('response data: ', response.data);
+            console.log('response status: ', response.status);
+        if (response.status = 200) {
                 setOpenModal(false);
+                
+                setMessages(data => [ response.data,...data]);
                 setNotify(true)
             } else {
 

@@ -196,7 +196,9 @@ const TopicDetails = () => {
             <div style={{ margin: '1.8rem 0em' }}>
             <IconButton
               kind="tertiary"
-              label={'refresh'} >      
+              label={'refresh'}
+              onClick={ fetchMessages}
+              >      
               <Renew />
             </IconButton>
           </div>
@@ -302,7 +304,7 @@ const TopicDetails = () => {
           </div>}
       </Column>
 
-      {open && <ProducerModal open={open} setOpenModal={setOpen} setNotify={setNotify} />}
+      {open && <ProducerModal open={open} setOpenModal={setOpen} setNotify={setNotify}  setMessages={setRows} />}
       {openModal && <RecordDeleteModal topicName={topic} openModal={openModal} setOpenModal={setOpenModal}  />}
       {openSaveModal && <SaveModal topicName={topic} openSaveModal={openSaveModal} setOpenSaveModal={setOpenSaveModal}  />}
       

@@ -6,7 +6,10 @@ import com.app.kafka.utils.MessageUtils;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.utils.Bytes;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import com.app.kafka.services.KafkaConnectionService;
 import com.app.kafka.topics.Message;
@@ -23,7 +26,7 @@ public class ProducerService {
     private final KafkaConnectionService kafkaConnectionService;
     private final MessagesHelper messagesHelper;
 
-    public void produce(String topicName, Message message, String clusterId) throws Exception {
+    public ListenableFuture<SendResult<Bytes, Bytes>> produce(String topicName, Message message, String clusterId) throws Exception {
         System.out.println("Start producer !!");
         //messagesHelper.validateTopics(clusterId, singletonList(topicName));
         KafkaTemplate<Bytes, Bytes> kafkaTemplate = kafkaConnectionService.getKafkaTemplate(clusterId);
@@ -39,8 +42,7 @@ public class ProducerService {
                                     ? replaceTokens(header.getValue(), 0).getBytes(StandardCharsets.UTF_8)
                                     : null);
         }
-        kafkaTemplate.send(producerRecord);
-        kafkaTemplate.flush();
+        return kafkaTemplate.send(producerRecord);
     }
 
     private String replaceTokens(String data, int i) {
