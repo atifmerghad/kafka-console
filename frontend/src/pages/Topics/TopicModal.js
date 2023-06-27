@@ -30,7 +30,7 @@ const TopicModal = ({open,setOpenModal,setNotify}) => {
         console.log('topic response : ', response);
         if(response.data = 200){
             setOpenModal(false);
-            setNotify(true)
+            setNotify({"status":true, "message": "Topic created successfully"})
         }else{
 
         }

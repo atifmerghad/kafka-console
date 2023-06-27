@@ -9,7 +9,7 @@ import {
   Column, Toggle, Search, FormGroup,IconButton,
   DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableExpandedRow, TableExpandHeader, Button, Stack, Tile, Pagination, ContentSwitcher, Switch, TableExpandRow, Dropdown, ToastNotification, DataTableSkeleton, SkeletonText
 } from '@carbon/react';
-import { topicValueDetails, topicHeaderDetails } from './sampleData';
+import { topicHeaderDetails } from './sampleData';
 import { TrashCan, Save, Download, Add, Renew, Send, Close} from "@carbon/react/icons";
 
 import ReactJson from 'react-json-view'
@@ -35,7 +35,7 @@ const TopicDetails = () => {
   const [open, setOpen] = useState(false);
   const [openSaveModal, setOpenSaveModal] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [notify, setNotify] = useState(false);
+  const [notify, setNotify] = useState({"status":false, "message": "Topic created seccusfuly"});
   const [limit, setLimit] = useState(500);
   const [startOffset, setStartOffset] = useState('Newest-500');
   
@@ -211,7 +211,7 @@ const TopicDetails = () => {
             </div>
 
             <div style={{ margin: '1.8rem 0em' }}>
-            <Button   style={{minHeight: '2.5rem'}} renderIcon={Send} iconDescription="Add"  kind="tertiary" onClick={() => {setOpen(true);setNotify(false)}}>Produce</Button>
+            <Button   style={{minHeight: '2.5rem'}} renderIcon={Send} iconDescription="Add"  kind="tertiary" onClick={() => {setOpen(true);setNotify({"status":false, "message": ""})}}>Produce</Button>
             </div>
 
             <div style={{ margin: '1.8rem 0em' }}>
@@ -263,13 +263,28 @@ const TopicDetails = () => {
                                 className={
                                   cell.info.header === 'value' ? 'line-overflow' : "test"
                                 }
-                                key={cell.value}>{cell.value}</TableCell>
+                                key={cell.value}>{(cell.info.header === 'timestamp')?(new Date(cell.value)).toLocaleString(undefined, {
+                                  year: 'numeric',
+                                  month: 'numeric',
+                                  day: 'numeric',
+                                  hour: 'numeric',
+                                  minute: 'numeric',
+                                  second: 'numeric',
+                                }):cell.value}</TableCell>
                             ))}
                           </TableExpandRow>
                           <TableExpandedRow
                             colSpan={headers.length + 3}
                             className="demo-expanded-td">
-                            <ReactJson src={JSON.parse(row.cells[4].value)} />
+                               {(() => {
+                                try {
+                                  const parsedValue = JSON.parse(row.cells[4].value);
+                                  return <ReactJson src={parsedValue} />;
+                                } catch (error) {
+                                  console.error('Error parsing JSON:', error);
+                                  return <p>Invalid JSON value: {row.cells[4].value}</p>;
+                                }
+                              })()}
                           </TableExpandedRow>
                         </React.Fragment>
                       ))}
@@ -308,9 +323,9 @@ const TopicDetails = () => {
       {openModal && <RecordDeleteModal topicName={topic} openModal={openModal} setOpenModal={setOpenModal}  />}
       {openSaveModal && <SaveModal topicName={topic} openSaveModal={openSaveModal} setOpenSaveModal={setOpenSaveModal}  />}
       
-      {notify &&
+      {notify.status &&
         <ToastNotification
-          title='Topic created seccusfuly'
+          title={notify.message}
           subtitle=''
           timeout="5000"
           kind="success"

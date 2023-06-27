@@ -62,7 +62,7 @@ const ProducerModal = ({ open, setOpenModal, setNotify, setMessages }) => {
                 setOpenModal(false);
                 
                 setMessages(data => [ response.data,...data]);
-                setNotify(true)
+                setNotify({"status":true, "message": "Message producer successfully"})
             } else {
 
             }
