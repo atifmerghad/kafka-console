@@ -1,5 +1,5 @@
 # Build frontend
-FROM node:14-alpine as frontend
+FROM node:16-alpine as frontend
 WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN yarn install

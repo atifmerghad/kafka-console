@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useToken from "../hooks/useToken";
 import routes from "./routes";
+import { LoadingScreen } from "../pages/Loading/LoadingScreen";
 
 const Login = React.lazy(() => import("../pages/Login/Login"));
 const Overview = React.lazy(() => import("../pages/Overview/Overview"));
@@ -16,18 +17,6 @@ const Track = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Tools = React.lazy(() => import("../pages/Tools/Tools"));
 const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
 
-export function LoadingScreen() {
-  return (
-    <div className="loading-wrapper">
-      {/* <div
-        className="animate-spin inline-block w-8 h-8 border-4 border-gold-dark border-r-transparent rounded-full"
-        role="status"
-      > */}
-      <span className="hidden">Loading...</span>
-      {/* </div> */}
-    </div>
-  );
-}
 
 const Router = () => {
   const { isAccount } = useToken();
