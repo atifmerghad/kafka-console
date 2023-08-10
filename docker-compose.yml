@@ -1,0 +1,14 @@
+version: '3'
+services:
+  kafka-console:
+    image: kafka-console
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3300:80"
+    networks:
+      - my-network
+
+networks:
+  my-network:
