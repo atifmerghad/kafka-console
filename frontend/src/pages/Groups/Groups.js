@@ -84,6 +84,7 @@ const Groups = () => {
           </BreadcrumbItem>
         </Breadcrumb>
       </Column>
+      <br/>
       <Column lg={16} md={8} sm={4} className="landing-page__r2" style={{ marginBottom: '1rem' }}>
         <Tile lg={4} md={4} sm={4}>
           <Grid>
@@ -107,7 +108,7 @@ const Groups = () => {
             onInputChange,
             selectedRows,
           }) => (
-            <TableContainer>
+            <TableContainer className="table-container">
               <TableToolbar>
                 <TableBatchActions {...getBatchActionProps()}>
                   <TableBatchAction

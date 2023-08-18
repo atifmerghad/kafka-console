@@ -16,6 +16,8 @@ const Security = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Track = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Tools = React.lazy(() => import("../pages/Tools/Tools"));
 const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
+const Connectors = React.lazy(() => import("../pages/Connectors/Connectors"));
+const Schemas = React.lazy(() => import("../pages/Schemas/Schemas"));
 const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
 
 const Router = () => {
@@ -67,7 +69,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <ShemaPage />
+             <Schemas/>
             </React.Suspense>
           }
           path={routes.SCHEMA}
@@ -99,7 +101,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <ConnectPage />
+              <Connectors />
             </React.Suspense>
           }
           path={routes.CONNECTOR}

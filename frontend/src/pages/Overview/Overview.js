@@ -11,7 +11,7 @@ import {
   TabList,
   TabPanels,
   TabPanel,
-  Grid, 
+  Grid,
   Column,
 } from '@carbon/react';
 import { InfoSection, InfoCard } from '../../components/Info';
@@ -24,66 +24,92 @@ class Overview extends Component {
 
     return (
       <Layout>
-      <div className="page-container">
-        <Column lg={16} md={8} sm={4} className="landing-page__banner">
-          <Breadcrumb noTrailingSlash aria-label="Page navigation">
-            <BreadcrumbItem>
-              <a href="/">Cluster Overview</a>
-            </BreadcrumbItem>
-          </Breadcrumb>
+        <div className="page-container">
+          <Column lg={16} md={8} sm={4} className="landing-page__banner">
+            <Breadcrumb noTrailingSlash aria-label="Page navigation">
+              <BreadcrumbItem>
+                <a href="/dashboard">Home</a>
+              </BreadcrumbItem>
+            </Breadcrumb>
 
-          <h3 className="landing-page__heading">
-            Cluster Settings
-          </h3>
+            <h3 className="landing-page__heading">
+              Welcome back to Kafka Console!
+            </h3>
+            <br></br>
+            <h5>Your Console overview</h5>
 
-          <DashBoardCardStatus
-          onresize={null}
-          data={12}
-          cardType="Average fulfillment time"
-        />
+            <div class="section">
+              <p>Summary of your existing resources</p> <br />
+              <Grid>
+                <Column lg={2} md={2} sm={2}>
+                  <DashBoardCardStatus
+                    onresize={null}
+                    data={1}
+                    cardType="Environments"
+                  />
+                </Column>
 
+                <Column lg={2} md={2} sm={2}>
+                  <DashBoardCardStatus
+                    onresize={null}
+                    data={3}
+                    cardType="Clusters"
+                  />
+                </Column>
 
-          <h3 className="landing-page__heading">
-          Identification (Name - Cluster ID	)
-          </h3>
+                <Column lg={2} md={2} sm={2}>
+                  <DashBoardCardStatus
+                    onresize={null}
+                    data={12}
+                    cardType="Topics"
+                  />
+                </Column>
 
-          <DashBoardCardStatus
-          onresize={null}
-          data={12}
-          cardType="Average fulfillment time"
-        />
+                <Column lg={2} md={2} sm={2}>
+                  <DashBoardCardStatus
+                    onresize={null}
+                    data={122}
+                    cardType="Partitions"
+                  />
+                </Column>
 
-          <h3 className="landing-page__heading">
-          Endpoints ( Bootstrap server )
-          </h3>
+                <Column lg={2} md={2} sm={2}>
+                  <DashBoardCardStatus 
+                     className="no-border"
+                    onresize={null}
+                    data={0}
+                    cardType="Connectors"
+                  />
+                </Column>
+              </Grid>
+            </div>
 
-          <DashBoardCardStatus
-          onresize={null}
-          data={1}
-          cardType="Average fulfillment time"
-        />
+            <h5 className="mt-4">
+            Recently viewed clusters
+            </h5>
 
-        </Column>
-        <Column lg={16} md={8} sm={4} className="landing-page__r3">
-          <InfoSection heading="Topics">
-            <InfoCard
-              heading="Carbon is Open"
-              body="It's a distributed effort, guided by the principles of the open-source movement. Carbon's users are also it's makers, and everyone is encouraged to contribute."
-              icon={() => <PersonFavorite size={32} />}
+            <div class="section">
+            <DashBoardCardStatus
+              onresize={null}
+              data={1}
+              cardType="Cluster_aws_0"
             />
-            <InfoCard
-              heading="Carbon is Modular"
-              body="Carbon's modularity ensures maximum flexibility in execution. It's components are designed to work seamlessly with each other, in whichever combination suits the needs of the user."
-              icon={() => <Application size={32} />}
+            </div>
+
+            <h5 className="mt-4">
+              Tips & Recommendation
+            </h5>
+
+            <div class="section">
+            <DashBoardCardStatus
+              onresize={null}
+              data={1}
+              cardType="Explore with an interactive demo"
             />
-            <InfoCard
-              heading="Carbon is Consistent"
-              body="Based on the comprehensive IBM Design Language, every element and component of Carbon was designed from the ground up to work elegantly together to ensure consistent, cohesive user experiences."
-              icon={() => <Globe size={32} />}
-            />
-          </InfoSection>
-        </Column>
-      </div>
+            </div>
+
+          </Column>
+        </div>
       </Layout>
     );
   }

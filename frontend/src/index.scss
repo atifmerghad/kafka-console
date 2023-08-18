@@ -29,17 +29,32 @@
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.dashboardRightSection {
+.section {
   background-color: #262626;
   color: var(--color-white);
   padding: 20px;
-  // padding: 25px 17px;
   display: flex;
   flex-flow: column;
 
   &:not(:first-child) {
     margin-top: 1rem;
   }
+}
+
+.dashboardRightSection {
+  background-color: #262626;
+  color: var(--color-white);
+  //padding: 20px;
+  display: flex;
+  flex-flow: column;
+  border-right: 2px solid;
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
+}
+
+.no-border {
+  border: none;
 }
 
 .dashboardNumber {
@@ -51,3 +66,13 @@
     font-size: 28px;
   }
 }
+
+
+.mt-4{
+  margin-top: 16px;
+}
+
+.table-container{
+  min-height: 500px;
+}
+

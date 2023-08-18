@@ -33,6 +33,13 @@ const navMenuLinks = [
     divider: true,
   },
   {
+    key: "broker",
+    title: "Brokers",
+    icon: Analytics,
+    link: routes.BROKERS, //TODO: update route
+    divider: false,
+  },
+  {
     key: "monitor-assets",
     title: "Topics",
     icon: CloudMonitoring,

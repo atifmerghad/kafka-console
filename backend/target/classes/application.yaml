@@ -16,3 +16,6 @@ tower:
 
 topics:
     exclude-regex-patterns: __.*
+
+
+schema-registry.url: http://localhost
