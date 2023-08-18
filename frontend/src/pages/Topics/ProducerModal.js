@@ -88,7 +88,7 @@ const ProducerModal = ({ open, setOpenModal, setNotify, setMessages }) => {
                                 id="default"
                                 titleText="TOPICS"
                                 label="All"
-                                items={['test-topic', 'test', 'topic-x', 'time-topic-1']}
+                                items={['test-topic', 'beta-topic']}
                                 initialSelectedItem={'test-topic'}
                                 itemToString={(item) => (item ? item : '')}
                             />
