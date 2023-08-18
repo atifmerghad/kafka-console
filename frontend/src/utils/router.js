@@ -16,7 +16,7 @@ const Security = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Track = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Tools = React.lazy(() => import("../pages/Tools/Tools"));
 const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
-
+const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
 
 const Router = () => {
   const { isAccount } = useToken();
@@ -83,7 +83,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <Metric />
+              <NotFound />
             </React.Suspense>
           }
           path={routes.METRIC}
@@ -91,7 +91,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <Metric />
+              <NotFound />
             </React.Suspense>
           }
           path={routes.SECURITY}
@@ -107,7 +107,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-             <Tools />
+             <NotFound />
             </React.Suspense>
           }
           path={routes.KSQLDB}
@@ -115,7 +115,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <Tools />
+              <NotFound />
             </React.Suspense>
           }
           path={routes.TRACK}
@@ -123,10 +123,19 @@ const Router = () => {
          <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <Tools />
+              {/*<Tools />*/}
+              <NotFound />
             </React.Suspense>
           }
           path={routes.TOOLS}
+        ></Route>
+        <Route
+          element={
+            <React.Suspense fallback={<LoadingScreen />}>
+              <NotFound />
+            </React.Suspense>
+          }
+          path={routes.NOT_FOUND}
         ></Route>
       </Routes>
     </BrowserRouter>

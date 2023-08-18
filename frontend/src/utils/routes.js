@@ -14,5 +14,6 @@ const routes = {
     STREAM: "/streams",
     TRACK: "/track",
     TOOLS: "/tools",
+    NOT_FOUND: "/404"
   };
   export default routes;
