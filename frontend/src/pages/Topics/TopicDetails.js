@@ -114,7 +114,7 @@ const TopicDetails = () => {
         <Tile lg={4} md={4} sm={4}>
           <Grid>
             <Column lg={2} md={8} sm={4}>Size <br />  {isLoading && <SkeletonText />}  {!isLoading && <h3>{topicDetails['size']} B</h3>}</Column>
-            <Column lg={2} md={8} sm={4}>Messages <br />  {isLoading && <SkeletonText />}  {!isLoading && <h3>0 </h3>}</Column>
+            <Column lg={2} md={8} sm={4}>Messages <br />  {isLoading && <SkeletonText />}  {!isLoading && <h3>{messages.length}</h3>}</Column>
             <Column lg={2} md={8} sm={4} style={{ borderLeft: '2px solid #cccccc', paddingLeft: '10px' }}>cleanup.policy <br />  {isLoading && <SkeletonText />}  {!isLoading && <h3>{topicDetails['cleanup.policy']}</h3>}</Column>
             <Column lg={2} md={8} sm={4}>segment.bytes<br />  {isLoading && <SkeletonText />}  {!isLoading && <h3>{topicDetails['segment.bytes']/1048576} MiB</h3>}</Column>
             <Column lg={2} md={8} sm={4}>segment.ms<br />  {isLoading && <SkeletonText />}  {!isLoading && <h3>{topicDetails['segment.ms']/(60*60*24*1000)} days</h3>}</Column>
