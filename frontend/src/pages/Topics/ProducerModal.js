@@ -10,7 +10,7 @@ import {
     Modal, TextInput, SelectItem, Select, NumberInput, Row, Loading
 } from '@carbon/react';
 
-const ProducerModal = ({ open, setOpenModal, setNotify, setMessages }) => {
+const ProducerModal = ({ open, setOpenModal, setNotify, setMessages }) => { 
 
     const [topicName, setTopicName] = useState('');
     const [partitions, setPartitions] = useState(1);

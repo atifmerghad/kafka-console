@@ -9,7 +9,7 @@ import {
     Modal, TextInput, SelectItem, Select, NumberInput,Row,Loading,Tag
 } from '@carbon/react';
 
-const TopicDeleteModal = ({open,topicName,setOpenTopicDeleteModal,setNotify}) => {
+const TopicDeleteModal = ({open,topicName,setOpenTopicDeleteModal,setTopics , setNotify}) => {
 
   const [name, setName] = useState('test');
   const [load, setLoad] = useState(false);
@@ -21,7 +21,9 @@ const TopicDeleteModal = ({open,topicName,setOpenTopicDeleteModal,setNotify}) =>
         .then(response => {
         console.log("response.data : ", response.status == 200);
         if(response.status == 200){
+            setTopics(data => data.filter(topic => topic.topicName !== topicName));
             setOpenTopicDeleteModal(false)
+            setNotify({"status":true, "message": "Topic deleted successfully", "kind":"error"})
         }else{
             setOpenTopicDeleteModal(false)
         }

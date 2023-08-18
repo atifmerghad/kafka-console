@@ -9,7 +9,7 @@ import {
     Modal, TextInput, SelectItem, Select, NumberInput,Row,Loading
 } from '@carbon/react';
 
-const TopicModal = ({open,setOpenModal,setNotify}) => {
+const TopicModal = ({open,setOpenModal,setTopics, setNotify}) => {
 
   const [topicName, setTopicName] = useState('');
   const [partitions, setPartitions] = useState(1);
@@ -18,7 +18,7 @@ const TopicModal = ({open,setOpenModal,setNotify}) => {
   const [cleanupPolicy, setCleanupPolicy] = useState('delete');
   const [load, setLoad] = useState(false);
 
-  const addTopic = (setOpenModal) => {
+  const addTopic = (setOpenModal, setTopics) => {
     console.log("topic : ",topicName);
     setLoad(true);
     console.log("new topic : ", topicName, partitions);
@@ -26,11 +26,23 @@ const TopicModal = ({open,setOpenModal,setNotify}) => {
     {
         topicName: topicName
     }
-    ).then((response) => {
+    ).then((response) => { 
         console.log('topic response : ', response);
-        if(response.data = 200){
+        if(response.status = 200){
+            const new_topic = {
+                "topicName": topicName,
+                "isInternal": false,
+                "partitions": null,
+                "partitionCount": 1,
+                "replicationFactor": 0,
+                "cleanupPolicy": null,
+                "documentation": null,
+                "allowedActions": null,
+                "id":123
+            };
+            setTopics(data => [new_topic,...data]);
             setOpenModal(false);
-            setNotify({"status":true, "message": "Topic created successfully"})
+            setNotify({"status":true, "message": "Topic created successfully", "kind":"success"})
         }else{
 
         }
@@ -47,7 +59,7 @@ const TopicModal = ({open,setOpenModal,setNotify}) => {
                     secondaryButtonText="Cancel"
                     open={open}
                     onRequestClose={() => setOpenModal(false)}
-                    onRequestSubmit={() => addTopic(setOpenModal)}
+                    onRequestSubmit={() => addTopic(setOpenModal,setTopics)}
                 >
                     <TextInput
                         data-modal-primary-focus

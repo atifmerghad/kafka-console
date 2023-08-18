@@ -28,7 +28,7 @@ const Topics = () => {
   const [partitions, setPartitions] = useState(0);
   const [open, setOpen] = useState(false);
   const [openTopicDeleteModal, setOpenTopicDeleteModal] = useState(false);
-  const [notify, setNotify] = useState(false);
+  const [notify, setNotify] = useState({"status":false, "message": ""});
   const [topicName, setTopicName] = useState(false);
   const navigate = useNavigate();
 
@@ -202,14 +202,14 @@ const Topics = () => {
     </div>}
       </Column>
 
-      {openTopicDeleteModal && <TopicDeleteModal  open={true}  topicName={topicName} setOpenTopicDeleteModal={setOpenTopicDeleteModal} />}
-      {open && <TopicModal  open={open} setOpenModal={setOpen} setNotify={setNotify} />}
-      {notify && 
+      {openTopicDeleteModal && <TopicDeleteModal  open={true}   setTopics={setRows} topicName={topicName} setOpenTopicDeleteModal={setOpenTopicDeleteModal}   setNotify={setNotify} />}
+      {open && <TopicModal  open={open} setTopics={setRows} setOpenModal={setOpen} setNotify={setNotify} />}
+      {notify.status && 
       <ToastNotification
-            title='Topic created seccusfuly'
+            title= {notify.message}
             subtitle=''
             timeout="5000"
-            kind="success"
+            kind={notify.kind}
             style={{ position: "absolute", bottom: 5, right: 5, zIndex: 9999, float: "right" }}
         />
       }

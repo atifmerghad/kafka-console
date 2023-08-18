@@ -35,7 +35,7 @@ const TopicDetails = () => {
   const [open, setOpen] = useState(false);
   const [openSaveModal, setOpenSaveModal] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [notify, setNotify] = useState({"status":false, "message": "Topic created seccusfuly"});
+  const [notify, setNotify] = useState({"status":false, "message": "Topic created seccusfuly", "kind":"success"});
   const [limit, setLimit] = useState(500);
   const [startOffset, setStartOffset] = useState('Newest-500');
   
