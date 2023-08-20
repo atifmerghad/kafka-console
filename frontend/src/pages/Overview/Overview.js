@@ -13,6 +13,7 @@ import {
   TabPanel,
   Grid,
   Column,
+  FlexGrid, Row, Tile, Link
 } from '@carbon/react';
 import { InfoSection, InfoCard } from '../../components/Info';
 import { Globe, Application, PersonFavorite } from '@carbon/react/icons';
@@ -38,79 +39,100 @@ class Overview extends Component {
             <br></br>
             <h5>Your Console overview</h5>
 
-            <div class="section">
-              <p>Summary of your existing resources</p> <br />
-              <Grid>
-                <Column lg={2} md={2} sm={2}>
-                  <DashBoardCardStatus
-                    onresize={null}
-                    data={1}
-                    cardType="Environments"
-                  />
-                </Column>
-
-                <Column lg={2} md={2} sm={2}>
-                  <DashBoardCardStatus
+            <Tile id="tile-1">
+              <Grid narrow>
+                <Column lg={4}>
+                <DashBoardCardStatus
                     onresize={null}
                     data={3}
-                    cardType="Clusters"
-                  />
-                </Column>
-
-                <Column lg={2} md={2} sm={2}>
-                  <DashBoardCardStatus
-                    onresize={null}
-                    data={12}
                     cardType="Topics"
                   />
                 </Column>
-
-                <Column lg={2} md={2} sm={2}>
-                  <DashBoardCardStatus
+                <Column lg={4}> <DashBoardCardStatus
                     onresize={null}
-                    data={122}
+                    data={12}
                     cardType="Partitions"
-                  />
-                </Column>
-
-                <Column lg={2} md={2} sm={2}>
-                  <DashBoardCardStatus 
-                     className="no-border"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
                     onresize={null}
-                    data={0}
-                    cardType="Connectors"
-                  />
-                </Column>
+                    data={36}
+                    cardType="Replicas"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"3/3"}
+                    cardType="Brokers Online"
+                  /></Column>
               </Grid>
-            </div>
+            </Tile>
 
             <h5 className="mt-4">
-            Recently viewed clusters
+              Cluster Details - SERVICES
             </h5>
 
-            <div class="section">
-            <DashBoardCardStatus
-              onresize={null}
-              data={1}
-              cardType="Cluster_aws_0"
-            />
-            </div>
 
+            <Tile id="tile-1">
+              <Grid narrow>
+                <Column lg={4}>
+                <DashBoardCardStatus
+                    onresize={null}
+                    data={"Not Configured"}
+                    cardType="Kafka Connect"
+                  />
+                </Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"Not Configured"}
+                    cardType="Schema Registry"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"NaN"}
+                    cardType="NaN"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"NaN"}
+                    cardType="NaN"
+                  /></Column>
+              </Grid>
+            </Tile>
+
+          
             <h5 className="mt-4">
               Tips & Recommendation
             </h5>
 
-            <div class="section">
-            <DashBoardCardStatus
-              onresize={null}
-              data={1}
-              cardType="Explore with an interactive demo"
-            />
-            </div>
+            <Tile id="tile-1">
+              <Grid narrow>
+              <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"NaN"}
+                    cardType="NaN"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"NaN"}
+                    cardType="NaN"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"NaN"}
+                    cardType="NaN"
+                  /></Column>
+                <Column lg={4}> <DashBoardCardStatus
+                    onresize={null}
+                    data={"NaN"}
+                    cardType="NaN"
+                  /></Column>
+              </Grid>
+            </Tile>
 
           </Column>
         </div>
+
       </Layout>
+
     );
   }
 };
