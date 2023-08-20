@@ -13,7 +13,7 @@ import {
   SideNavDivider,
 } from "@carbon/react";
 import React, { Fragment, useState } from "react";
-import { useTheme } from '../../hooks/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 
 const NavButtons = (props) => {

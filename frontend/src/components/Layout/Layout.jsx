@@ -4,7 +4,7 @@ import { APP_THEME } from "../../utils/constants";
 import AppHeader from "../Header/AppHeader";
 //import SideMenu from "../SideMenu/SideMenu";
 
-import { useTheme } from '../../hooks/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Layout({ children }) {
 

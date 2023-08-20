@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from "../../components/Layout/Layout";
-import { useTheme } from '../../hooks/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import { Form, Stack, TextInput, TextArea, Select, SelectItem, Button } from '@carbon/react';
 
 

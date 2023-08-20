@@ -7,6 +7,13 @@ import {
   BrightnessContrast,
   UserAvatar,
   UserRole,
+  DataCenter,
+  Schematics,
+  IbmCloudDirectLink_1Connect,
+  IbmSecurity,
+  TaskTools,
+  Activity,
+  Api
 } from "@carbon/icons-react";
 import routes from "./routes";
 
@@ -43,7 +50,7 @@ const navMenuLinks = [
   {
     key: "broker",
     title: "Brokers",
-    icon: Analytics,
+    icon: DataCenter,
     link: routes.BROKERS, //TODO: update route
     divider: false,
   },
@@ -56,38 +63,38 @@ const navMenuLinks = [
   {
     key: "map-view",
     title: "Consumer Groups",
-    icon: Map,
+    icon: Api,
     link: routes.GROUPS,
     divider: true,
   },
   {
     key: "manage-assets",
     title: "Schema Registry",
-    icon: IotConnect,
+    icon: Schematics,
     link: routes.SCHEMA,
   },
   {
     key: "manage-users",
     title: "Connectors",
-    icon: UserRole,
+    icon: IbmCloudDirectLink_1Connect,
     link: routes.CONNECTOR, //TODO: update route
   },
   {
     key: "manage-users",
     title: "Security",
-    icon: UserRole,
+    icon: IbmSecurity,
     link: routes.SECURITY, //TODO: update route
   },
   {
     key: "manage-tools",
     title: "Track",
-    icon: Analytics,
+    icon: Activity,
     link: routes.TRACK, //TODO: update route
   },
   {
     key: "dashboard",
     title: "Advanced Tools",
-    icon: IotConnect,
+    icon: TaskTools,
     link: routes.TOOLS, //TODO: update route
   },
 ];

@@ -98,7 +98,7 @@ const TopicDetails = () => {
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
-            <a href="/">Cluster</a>
+            <a href="/dashboard">Cluster</a>
           </BreadcrumbItem>
           <BreadcrumbItem>
             <a href="/topics">Topics</a>

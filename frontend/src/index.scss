@@ -29,8 +29,6 @@
 }
 
 .section {
-  background-color: #262626;
-  color: var(--color-white);
   padding: 20px;
   display: flex;
   flex-flow: column;
@@ -41,8 +39,7 @@
 }
 
 .dashboardRightSection {
-  background-color: #262626;
-  color: var(--color-white);
+
   //padding: 20px;
   display: flex;
   flex-flow: column;
