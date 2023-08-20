@@ -35,7 +35,7 @@ const headerNavLinks = [
     key: "login",
     title: "Login",
     icon: <UserAvatar size={20} />,
-    link: routes.LOGIN,
+    link: routes.PROFILE//routes.LOGIN,
   },
 ];
 

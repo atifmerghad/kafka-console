@@ -67,7 +67,7 @@ const AppHeader = () => {
           )
           )}
         </HeaderGlobalBar>
-        <SideNav
+        <SideNav className='nav-border'
           isRail
           aria-label="Side navigation"
           expanded={isSideNavExpanded}

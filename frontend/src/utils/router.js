@@ -19,6 +19,7 @@ const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
 const Connectors = React.lazy(() => import("../pages/Connectors/Connectors"));
 const Schemas = React.lazy(() => import("../pages/Schemas/Schemas"));
 const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
+const Profile = React.lazy(() => import("../pages/Profile/Profile"));
 
 const Router = () => {
   const { isAccount } = useToken();
@@ -138,6 +139,15 @@ const Router = () => {
             </React.Suspense>
           }
           path={routes.TOOLS}
+        ></Route>
+
+        <Route
+          element={
+            <React.Suspense fallback={<LoadingScreen />}>
+              <Profile />
+            </React.Suspense>
+          }
+          path={routes.PROFILE}
         ></Route>
       </Routes>
     </BrowserRouter>

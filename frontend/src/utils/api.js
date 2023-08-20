@@ -84,6 +84,14 @@ const getAllBrokers = async () => {
 };
 
 
+const getAllTopics = async () => {
+  try {
+    let res = await ApiFetch(`${constants.GET_ALL_TOPICS}`, "GET");
+    if (res) return { res };
+  } catch { }
+};
+
+
 export {
   getAllBrokers
 };

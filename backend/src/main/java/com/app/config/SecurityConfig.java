@@ -37,8 +37,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/api-docs", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**", "/swagger-ui.html")
+                .permitAll() 
                 .antMatchers("/**/auth/**")
                 .permitAll()
+                .antMatchers("/**") // Allow all requests without authentication
+                .permitAll() 
                 .anyRequest()
                 .authenticated()
                 .and()
