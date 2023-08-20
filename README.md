@@ -14,9 +14,18 @@
     - User based
     - Role based
 
+## KAFKA
 
 
+## FRONTEND
 
+## BACKEND
+
+## DOCKER
+
+
+Build : docker build -t my-app .   
+Run : docker run -d -p 3300:80 my-app
 
 docker run -p 8088:8080 \
   -e KAFKA_BROKERS=pkc-6ojv2.us-west4.gcp.confluent.cloud:9092 \
@@ -29,16 +38,15 @@ docker run -p 8088:8080 \
   -e REDPANDA_CONSOLE_CREDENTIALS="username=atif&password=password" \
   docker.redpanda.com/vectorized/console:latest
 
+## KUBERNETES
 
-APIS : 
- Request timed out after 25 sec: ./api/topics
- Request timed out after 25 sec: ./api/topics
- Request timed out after 25 sec: ./api/cluster
- Request timed out after 25 sec: ./api/cluster
- Request timed out after 25 sec: ./api/cluster
- Request timed out after 25 sec: ./api/schemas
- Request timed out after 25 sec: ./api/cluster/overview
- Request timed out after 25 sec: ./api/brokers
+
+## DEBUG 
+
+frontend :  npm run start:dev
+backend :  /usr/bin/env /opt/homebrew/Cellar/openjdk@11/11.0.15/libexec/openjdk.jdk/Contents/Home/bin/java @/var/folders/mp/s6v23cx54jj7fpy48cz9wm400000gn/T/cp_78lwa07h986znzse7a9v2pmzv.argfile com.Application
+
+
 
 
 Overview : 
@@ -62,9 +70,3 @@ Overview :
         - SECURITY : 
             Service Accounts :Admin API not configured
             ACLs : 0
-    
-
-# Docker 
-
-Build : docker build -t my-app .   
-Run : docker run -d -p 3300:80 my-app
