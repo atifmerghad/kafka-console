@@ -70,6 +70,9 @@ class Overview extends Component {
               Cluster Details - SERVICES
             </h5>
 
+            <div style={{ textAlign: "center", padding: "50px"}}>
+  <img src="/images/apache_kafka.svg" alt="KafkaConsole logo" width="50%" height="auto" />
+</div>
 
             <Tile id="tile-1">
               <Grid narrow>
