@@ -12,7 +12,7 @@ const TopicDetails = React.lazy(() => import("../pages/Topics/TopicDetails"));
 const ShemaPage = React.lazy(() => import("../pages/Metrics/Metrics"));
 const ConnectPage = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Metric = React.lazy(() => import("../pages/Metrics/Metrics"));
-const Security = React.lazy(() => import("../pages/Metrics/Metrics"));
+const Security = React.lazy(() => import("../pages/Security/Security"));
 const Track = React.lazy(() => import("../pages/Metrics/Metrics"));
 const Tools = React.lazy(() => import("../pages/Tools/Tools"));
 const ConsumerGroup = React.lazy(() => import("../pages/Groups/Groups"));
@@ -93,7 +93,7 @@ const Router = () => {
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <NotFound />
+              < Security />
             </React.Suspense>
           }
           path={routes.SECURITY}
@@ -125,19 +125,19 @@ const Router = () => {
          <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              {/*<Tools />*/}
-              <NotFound />
+              <Tools />
             </React.Suspense>
           }
           path={routes.TOOLS}
         ></Route>
+        
         <Route
           element={
             <React.Suspense fallback={<LoadingScreen />}>
-              <NotFound />
+              <Tools />
             </React.Suspense>
           }
-          path={routes.NOT_FOUND}
+          path={routes.TOOLS}
         ></Route>
       </Routes>
     </BrowserRouter>

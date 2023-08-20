@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import Layout from "../../components/Layout/Layout";
 
-import { apiClient } from "../../utils/client";
-
 import { getAllBrokers } from "../../utils/api";
 
 import {

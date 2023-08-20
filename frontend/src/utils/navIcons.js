@@ -4,16 +4,24 @@ import {
   IotConnect,
   Map,
   Settings,
+  BrightnessContrast,
   UserAvatar,
   UserRole,
 } from "@carbon/icons-react";
 import routes from "./routes";
 
+
 const headerNavLinks = [
+  {    
+  key: "theme",
+  title: "Theme",
+   icon: <BrightnessContrast size={20} />,
+   link: routes.SETTINGS
+  },
   {
     key: "settings",
     title: "Settings",
-    icon: <Settings size={20} />,
+    icon: <Settings size={20}/>,
     // link: routes.SETTINGS, //TODO: update route
   },
   {

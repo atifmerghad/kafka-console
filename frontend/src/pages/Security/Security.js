@@ -12,6 +12,8 @@ import {
 import { headerData, rowData } from './sampleData';
 import { Save, Download, Add, TrashCan } from "@carbon/react/icons";
 
+import Layout from "../../components/Layout/Layout";
+
 import Svg from '../../components/Svg'
 
 import { apiClient } from "../../utils/client";
@@ -49,7 +51,8 @@ const Security = () => {
   };
 
   return (
-    <div className="page-container">
+    <Layout>
+      <div className="page-container">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <Breadcrumb noTrailingSlash aria-label="Page navigation">
           <BreadcrumbItem>
@@ -62,12 +65,13 @@ const Security = () => {
         </Breadcrumb>
 
       </Column>
+      <br></br>
       <Column lg={16} md={8} sm={4} className="landing-page__r2" style={{ marginBottom: '1rem' }}>
         <Tile lg={4} md={4} sm={4}>
           <Grid>
             <Column lg={2} md={8} sm={4}>ACL Count <br />  {isLoading && <SkeletonText />}   {!isLoading &&<h3>{acls.length}</h3>}</Column>
-            <Column lg={2} md={8} sm={4}>Users <br />  {isLoading && <SkeletonText />}   {!isLoading &&<h3>{acls.length -2}</h3>}</Column>
-            <Column lg={2} md={8} sm={4}>Groups <br />  {isLoading && <SkeletonText />}   {!isLoading &&<h3>{acls.length -5}</h3>}</Column>
+            <Column lg={2} md={8} sm={4}>Users <br />  {isLoading && <SkeletonText />}   {!isLoading &&<h3>{acls.length}</h3>}</Column>
+            <Column lg={2} md={8} sm={4}>Groups <br />  {isLoading && <SkeletonText />}   {!isLoading &&<h3>{acls.length }</h3>}</Column>
 
           </Grid>
         </Tile>
@@ -163,6 +167,7 @@ const Security = () => {
         />
       }
     </div>
+    </Layout>
 
   );
 };

@@ -12,11 +12,12 @@ import {
   HeaderGlobalAction,
   SideNavDivider,
 } from "@carbon/react";
-import { useState } from "react";
-import { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { useTheme } from '../../hooks/ThemeContext';
+
 
 const NavButtons = (props) => {
-  const { navButton, navMenu } = props;
+  const { navButton, navMenu, onClick} = props;
   const { link, icon, title } = navButton;
 
   const location = useLocation();
@@ -29,7 +30,7 @@ const NavButtons = (props) => {
           {title}
         </SideNavLink>
       ) : (
-        <HeaderGlobalAction aria-label={title} href={link} isActive={isActive}>
+        <HeaderGlobalAction aria-label={title} href={link} isActive={isActive} onClick={onClick}>
           {icon}
         </HeaderGlobalAction>
       )}
@@ -38,6 +39,8 @@ const NavButtons = (props) => {
 };
 
 const AppHeader = () => {
+
+  const {toggleTheme } = useTheme();
   const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
 
   return (
@@ -54,8 +57,15 @@ const AppHeader = () => {
         </HeaderName>
         <HeaderGlobalBar>
           {headerNavLinks.map((item) => (
-            <NavButtons key={item.key} navButton={item} />
-          ))}
+            <React.Fragment key={item.key}>
+              {item.key === "theme" ? (
+                <NavButtons navButton={item} onClick={toggleTheme} />
+              ) : (
+                <NavButtons navButton={item} />
+              )}
+            </React.Fragment>
+          )
+          )}
         </HeaderGlobalBar>
         <SideNav
           isRail
