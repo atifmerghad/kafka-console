@@ -25,7 +25,7 @@ const NotFound = () =>{
                 Back
             </Button>
             <span> </span>
-            <Button className="cds--col"  kind="" onClick={() => navigate("/dashboard")}>
+            <Button className="cds--col"  kind="" onClick={() => navigate("/")}>
                 Home
             </Button>
             </div>
