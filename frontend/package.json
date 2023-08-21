@@ -7,14 +7,19 @@
     "@carbon/charts-react": "^1.6.4",
     "@carbon/icons-react": "^11.19.0",
     "@monaco-editor/react": "^4.4.6",
+    "@stomp/stompjs": "^7.0.0",
     "axios": "^1.3.2",
     "d3": "^7.8.2",
     "express": "^4.18.1",
     "is-extglob": "^2.1.1",
     "monaco-editor": "^0.35.0",
+    "net": "^1.0.2",
     "react-json-pretty": "^2.2.0",
     "react-json-view": "^1.21.3",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "react-use-websocket": "^4.3.1",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3"
   },
   "devDependencies": {
     "@carbon/react": "^1.8.0",

@@ -74,7 +74,7 @@ const navMenuLinks = [
     link: routes.SCHEMA,
   },
   {
-    key: "manage-users",
+    key: "manage-connectors",
     title: "Connectors",
     icon: IbmCloudDirectLink_1Connect,
     link: routes.CONNECTOR, //TODO: update route
@@ -92,7 +92,7 @@ const navMenuLinks = [
     link: routes.TRACK, //TODO: update route
   },
   {
-    key: "dashboard",
+    key: "tools-p",
     title: "Advanced Tools",
     icon: TaskTools,
     link: routes.TOOLS, //TODO: update route

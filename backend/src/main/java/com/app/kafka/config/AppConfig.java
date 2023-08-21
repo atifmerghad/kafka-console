@@ -23,6 +23,7 @@ public class AppConfig {
         initConfig();
         log.info(toString());
     }
+    
 
     private void initConfig() {
         log.info("Advanced configuration present, {}", clusters);

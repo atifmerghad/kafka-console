@@ -1,58 +1,101 @@
 import React, { useEffect, useState } from 'react';
 import Layout from "../../components/Layout/Layout";
 import { useTheme } from '../../contexts/ThemeContext';
-import { Form, Stack, TextInput, TextArea, Select, SelectItem, Button } from '@carbon/react';
+import { Form, Stack, TextInput, TextArea, Select, SelectItem, Button, Tile } from '@carbon/react';
+import Stomp from "stompjs";
 
 
 const Tools = () => {
+    const [messages, setMessages] = useState([]);
 
-    const { theme, toggleTheme } = useTheme();
+    useEffect(() => {
+        const socket = new WebSocket("ws://localhost:8080/chat");
+        const stompClient = Stomp.over(socket);
+        
+        stompClient.connect({}, frame => {
+          console.log("Connected: " + frame);
+          stompClient.subscribe("/topic/randomMessages", message => {
+            //const body = JSON.parse(message.body);
+            const newMessage = message.body;
+            setMessages((prevMessages) => [...prevMessages, newMessage]);
+          });
+    
+          if (socket.readyState === WebSocket.OPEN) {
+            //const messageContent = "Hello from the frontend!";
+            //stompClient.send("/app/someEndpoint", {}, JSON.stringify(messageContent));
+          }
+        });
+    
+        return () => {
+        if (socket.readyState === WebSocket.OPEN)
+          stompClient.disconnect();
+        };
+      }, []);
 
     return (
         <Layout>
             <div className="page-container">
-                {/*
-                              <div className="settings">
-                    <h2>Theme Settings</h2>
-                    <Button onClick={toggleTheme}>Theme {theme}</Button> <pre>   </pre>
-                </div>
-                 */}
-
                 <Form>
                     <Stack gap={7}>
                         <TextInput
-                            helperText="This will show details about your cluster information ..."
                             id="test2"
                             invalidText="Invalid error message."
                             labelText="Auttomate Kafka Tasks"
                             placeholder="Boostrap Server"
                         />
+                        <Stack gap={6} orientation="horizontal">
+                            <TextInput
+                                id="test2"
+                                invalidText="Invalid error message."
+                                labelText="Username"
+                                placeholder="EX. admin"
+                            />
+                            <TextInput
+                                id="test2"
+                                invalidText="Invalid error message."
+                                labelText="Password"
+                                placeholder="***********"
+                            />
+
+                            <div>
+                                <div>--</div>
+                                <Button
+                                    kind="primary"
+                                    tabIndex={0}
+                                    type="submit"
+                                >
+                                    Save
+                                </Button>
+                            </div>
+                        </Stack>
+
+
                         <TextArea
-                            cols={50}
+
                             helperText="This will show details about your cluster information ..."
                             id="test5"
                             invalidText="Invalid error message."
-                            labelText="Auttomate Kafka Tasks"
+                            labelText="Qeury Editor"
                             placeholder="Optional placeholder text"
                             rows={4}
                         />
                         <Select
                             defaultValue="placeholder-item"
                             id="select-1"
-                            invalidText="This is an invalid error message."
-                            labelText="Select"
+                            invalidText="Write your query to consume the data with specofoed criteria"
+                            labelText="Read from"
                         >
                             <SelectItem
-                                text="Option 1"
-                                value="option-1"
+                                text="beginning"
+                                value="beginning"
                             />
                             <SelectItem
-                                text="Option 2"
-                                value="option-2"
+                                text="latest"
+                                value="latest"
                             />
                             <SelectItem
-                                text="Option 3"
-                                value="option-3"
+                                text="Custom"
+                                value="custom"
                             />
                         </Select>
                         <Button
@@ -60,8 +103,14 @@ const Tools = () => {
                             tabIndex={0}
                             type="submit"
                         >
-                            Submit
+                            Process
                         </Button>
+
+                        <Tile>
+                        {messages.map((message, index) => (
+                            <div key={index}>{message}</div>
+                            ))}
+                     </Tile>
                     </Stack>
                 </Form>
             </div>
