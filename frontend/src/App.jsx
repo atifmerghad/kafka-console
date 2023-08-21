@@ -25,6 +25,8 @@ function App() {
 
   const [hasAccess, setHasAccess] = useState(isAuthTokenValid);
   const { login, isAccount } = useToken();
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   useEffect(() => {
     setHasAccess(isAccount || isAuthTokenValid);
@@ -38,11 +40,11 @@ function App() {
     <>
       {
         hasAccess || allowLocalhostLogin ?
-          <div className="App">
+          (<div className="App">
             <Router />
-          </div>
+          </div>)
           :
-         <Login></Login>
+         (<Login></Login>)
       }
     </>
   );

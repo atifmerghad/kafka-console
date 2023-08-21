@@ -1,4 +1,4 @@
-import React, { startTransition, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from "../../components/Layout/Layout";
 import { Form, Stack, TextInput, Tile, Select, SelectItem, Button, Grid, Column, FileUploader } from '@carbon/react';
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,9 @@ import routes from "../../utils/routes";
 const Profile = () => {
     const navigate = useNavigate();
     const logout = async () => {
-        await startTransition(() => {
           localStorage.clear();
-          navigate(routes.LOGIN);
-        });
+          window.location.href = routes.LOGIN;
+//          navigate(routes.LOGIN);
       };
   
     return (
