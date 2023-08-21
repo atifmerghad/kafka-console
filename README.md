@@ -19,6 +19,7 @@
 
 ## FRONTEND
 
+    - Protect pages 
 ## BACKEND
 
 swagger : http://localhost:8080/swagger-ui/index.html#/

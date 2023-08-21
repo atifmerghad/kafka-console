@@ -1,6 +1,6 @@
 const routes = {
-    LOGIN: "/",
-    DASHBOARD: "/dashboard",
+    LOGIN: "/login",
+    DASHBOARD: "/",
     BROKERS: "/brokers",
     TOPICS: "/topics",
     TOPIC_DETAILS: "/topic-details",

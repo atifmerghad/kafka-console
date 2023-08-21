@@ -11,7 +11,6 @@ import {
 import { useEffect, useState } from "react";
 import useToken from "../../hooks/useToken";
 import routes from "../../utils/routes";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -19,10 +18,8 @@ const Login = () => {
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [isAsyncInProgress, setIsAsyncInProgress] = useState(false);
   const { login, isAccount, errorResponse, setErrorResponse } = useToken();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("isaccount updates ", isAccount);
     if (isAccount === true) {
       completeLogin();
     }
@@ -54,7 +51,6 @@ const Login = () => {
   };
 
   const completeLogin = () => {
-    //navigate(routes.DASHBOARD);
     window.location.replace(routes.DASHBOARD);
   };
 

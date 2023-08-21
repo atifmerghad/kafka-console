@@ -69,71 +69,61 @@ class Overview extends Component {
             <h5 className="mt-4">
               Cluster Details - SERVICES
             </h5>
-
-            <div style={{ textAlign: "center", padding: "50px"}}>
-  <img src="/images/apache_kafka.svg" alt="KafkaConsole logo" width="50%" height="auto" />
-</div>
-
-            <Tile id="tile-1">
-              <Grid narrow>
-                <Column lg={4}>
-                <DashBoardCardStatus
+            <br></br>
+<Tile id="tile-1">
+<Grid narrow>
+<Column lg={3}>
+<DashBoardCardStatus
                     onresize={null}
-                    data={"Not Configured"}
-                    cardType="Kafka Connect"
+                    data={"Kafka Connect"}
+                    cardType="Not Configured"
                   />
-                </Column>
-                <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"Not Configured"}
-                    cardType="Schema Registry"
-                  /></Column>
-                <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"NaN"}
-                    cardType="NaN"
-                  /></Column>
-                <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"NaN"}
-                    cardType="NaN"
-                  /></Column>
-              </Grid>
-            </Tile>
 
-          
-            <h5 className="mt-4">
+<DashBoardCardStatus
+                    onresize={null}
+                    data={"Schema Registry"}
+                    cardType="Not Configured"
+                  />
+
+<DashBoardCardStatus
+                    onresize={null}
+                    data={"Rest Proxy"}
+                    cardType="Not Configured"
+                  />
+<DashBoardCardStatus
+                    onresize={null}
+                    data={"KsqlDB"}
+                    cardType="Not Configured"
+                  />
+</Column>
+<Column lg={10}>
+  <div style={{ textAlign: "center", padding: "50px", width: "100%"}}>
+    <img src="/images/arch_hand.png" alt="KafkaConsole logo" width="100%" height="auto" />
+  </div>
+</Column>
+</Grid>
+</Tile>
+          </Column>
+
+          <h5 className="mt-4">
               Tips & Recommendation
             </h5>
+            <br/>
 
-            <Tile id="tile-1">
-              <Grid narrow>
-              <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"NaN"}
-                    cardType="NaN"
-                  /></Column>
-                <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"NaN"}
-                    cardType="NaN"
-                  /></Column>
-                <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"NaN"}
-                    cardType="NaN"
-                  /></Column>
-                <Column lg={4}> <DashBoardCardStatus
-                    onresize={null}
-                    data={"NaN"}
-                    cardType="NaN"
-                  /></Column>
-              </Grid>
-            </Tile>
-
-          </Column>
+  <Grid narrow style={{marginLeft: "-17px"}}>
+    <Column sm={4} >
+      <Tile>1</Tile>
+    </Column>
+    <Column sm={4} >
+    <Tile>2</Tile>
+    </Column>
+    <Column sm={4} ><Tile>3</Tile></Column>
+    <Column sm={4} ><Tile>4</Tile></Column>
+    
+    </Grid>
+    <br/>
+    <br/>
         </div>
-
       </Layout>
 
     );

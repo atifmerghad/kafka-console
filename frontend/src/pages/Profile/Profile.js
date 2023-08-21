@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { startTransition, useEffect, useState} from 'react';
 import Layout from "../../components/Layout/Layout";
 import { Form, Stack, TextInput, Tile, Select, SelectItem, Button, Grid, Column, FileUploader } from '@carbon/react';
-
+import { useNavigate } from 'react-router-dom';
+import routes from "../../utils/routes";
 
 const Profile = () => {
-
+    const navigate = useNavigate();
+    const logout = async () => {
+        await startTransition(() => {
+          localStorage.clear();
+          navigate(routes.LOGIN);
+        });
+      };
+  
     return (
         <Layout>
             <div className="page-container">
                 <Grid>
-                    <Column lg={6}>
+                    <Column lg={8}>
                         <Tile>
-                        Contact information
+                            User information
                         </Tile>
-                        <div style ={{width:"min-content"}}>
-                            <img width="100%" src="/images/avatar_1.png" style ={{paddingTop: "3rem"}}></img>
-                            <FileUploader buttonLabel="Uplad a photo" buttonKind=""  filenameStatus="edit" multiple={true} disabled={false} iconDescription="Uplad a photo" name="" />
-                            <Button kind="danger">Delete picture</Button>
+
+                        <div style={{ width: "min-content" }}>
+                            <img width="100%" src="/images/avatar_1.png" style={{ paddingTop: "3rem" }}></img>
+                            <div>
+                                <FileUploader buttonLabel="Uplad a photo" buttonKind="" filenameStatus="edit" multiple={true} disabled={false} iconDescription="Uplad a photo" name="" />
+
+                                <Button kind="danger">Delete picture</Button>
+
+
+                            </div>
                         </div>
-                        <div>
-                        <h2>Name</h2>
-                        <h5>Atif Merghad</h5>
-                        </div>
-                    </Column>
-                    <Column lg={10}>
+
                         <Form>
                             <Stack gap={7}>
                                 <TextInput
@@ -49,7 +58,7 @@ const Profile = () => {
                                     helperText="This will show details about your cluster information ..."
                                     id="test2"
                                     invalidText="Invalid error message."
-                                    labelText="User ID"
+                                    labelText="Email"
                                     placeholder="Boostrap Server"
                                     value="atif.merghad@gmail.com"
                                     disabled
@@ -99,6 +108,17 @@ const Profile = () => {
                                 </Button>
                             </Stack>
                         </Form>
+
+
+                    </Column>
+                    <Column lg={8}>
+                        <Tile>
+                            Settings
+                        </Tile>
+                        <div>
+                            <br></br>
+                            <Button onClick={() => logout()}>Log out</Button>
+                        </div>
 
                     </Column>
                 </Grid>
