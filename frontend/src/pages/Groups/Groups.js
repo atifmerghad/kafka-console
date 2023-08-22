@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   Breadcrumb,
   BreadcrumbItem,
@@ -9,13 +9,11 @@ import {
   Tile, Pagination, Checkbox,
  ToastNotification,DataTableSkeleton,SkeletonText
 } from '@carbon/react';
-import { headerData, rowData } from './sampleData';
 import { Save, Download, Add, TrashCan } from '@carbon/react/icons';
-
 
 import Layout from "../../components/Layout/Layout";
 
-import { apiClient } from "../../utils/client";
+import { getAllConsumerGroups } from "../../utils/api";
 
  
 const Groups = () => {
@@ -29,28 +27,75 @@ const Groups = () => {
 
   var allRows = groups;
 
+  const headerData = [
+    {
+      key: 'state',
+      header: 'State',
+    },
+    {
+      key: 'id',
+      header: 'ID',
+    },
+    {
+      key: 'coordinatorId',
+      header: 'Coordinator',
+    },
+    {
+      key: 'protocol',
+      header: 'Protocol',
+    },
+    {
+      key: 'memberCount',
+      header: 'Members',
+    },
+    {
+      key: 'lag',
+      header: 'Lag (Sum)',
+    }
+  ];
+
   const showHeaders = true;
+
   useEffect(() => {
-    apiClient.get('http://localhost:8080/api/consumer-groups?clusterId=cluster1').then((response) => {
-      console.log("response :",response);
-      var groups = response.data//.consumerGroups
-      var count = 0;
-      SetIsLoading(false)
-      if (groups.length > 0) {
-       
-        groups.forEach((element, i) => {
-          groups[i]['id'] = element.groupId;
-          count = 0;
-        });
+    const fetchConsumerGroups = async (callbackData) => {
+      try {
+        const allConsumerGroupsdata = await getAllConsumerGroups();
+
+        if (allConsumerGroupsdata.res?.res?.statusCode === 401) {
+          throw new Error(allConsumerGroupsdata.res.res.message);
+        }
+        // Logic 
+        var groups = allConsumerGroupsdata.data//.consumerGroups
+        var count = 0;
+        SetIsLoading(false)
+        if (groups.length > 0) {
+         
+          groups.forEach((element, i) => {
+            groups[i]['id'] = element.groupId;
+            count = 0;
+          });
+        }
+        setPartitions(count);
+        setGroups(groups);
+        allRows = groups;
+        setRows(paginate({ page: 1, pageSize: 5 }));
+
+        // End Logic
+      } catch (error) {
+        //handleError(error);
+        //clearInterval(interval.current);
+      } finally {
+        //handleSpinnerStatus(false);
       }
-      setPartitions(count);
-      setGroups(groups);
-      allRows = groups;
-      setRows(paginate({ page: 1, pageSize: 5 }));
-    }).catch(error => {
-      console.log("Axios handle error - ctash")
-   });
+    }
+
+    function clearFetchGetallConsumerGroups() {
+      // interval.current = setInterval(() => fetchGetAllBrokers(null), 10000);
+     }
+
+     fetchConsumerGroups(clearFetchGetallConsumerGroups);
   }, []);
+
 
   const deletegroups = () => {
     console.log("delete groups ");

@@ -9,12 +9,11 @@ import {
   BreadcrumbItem,
   Grid,
   Column,
-  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, Tile, Pagination, ToastNotification, TableExpandRow, TableExpandHeader, DataTableSkeleton, SkeletonText, Theme
+  DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, Tile, Pagination, ToastNotification, TableExpandRow, TableExpandHeader, DataTableSkeleton, SkeletonText
 } from '@carbon/react';
 import { headerData } from './sampleData';
 
 import Svg from '../../components/Svg'
-
 
 const Brokers = () => {
 

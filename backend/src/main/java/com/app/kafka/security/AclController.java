@@ -11,8 +11,6 @@ import com.app.kafka.services.KafkaConnectionService;
 
 import lombok.AllArgsConstructor;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
@@ -83,4 +81,12 @@ public class AclController {
         
             return ResponseEntity.ok("ACL created successfully");
         }
+
+
+     @GetMapping("/service_account")
+    public List<String> getServiceAccountInfo(@RequestParam("clusterId") String clusterId) {
+        AdminClient adminClient = kafkaConnectionService.getAdminClient(clusterId);
+
+        return null; 
+    }
 }

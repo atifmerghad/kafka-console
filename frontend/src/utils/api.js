@@ -92,6 +92,15 @@ const getAllTopics = async () => {
 };
 
 
+const getAllConsumerGroups = async () => {
+  try {
+    let res = await ApiFetch(`${constants.GET_ALL_CONSUMER_GROUPS}`, "GET");
+    if (res) return { res };
+  } catch { }
+};
+
+
 export {
-  getAllBrokers
+  getAllBrokers,
+  getAllConsumerGroups
 };
