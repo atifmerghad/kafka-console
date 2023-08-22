@@ -13,7 +13,8 @@ import {
   IbmSecurity,
   TaskTools,
   Activity,
-  Api
+  Api,
+  Laptop
 } from "@carbon/icons-react";
 import routes from "./routes";
 
@@ -92,11 +93,17 @@ const navMenuLinks = [
     link: routes.TRACK, //TODO: update route
   },
   {
+    key: "clients",
+    title: "Clients",
+    icon:Laptop,
+    link: routes.CLIENTS, //TODO: update route
+  },
+  {
     key: "tools-p",
     title: "Advanced Tools",
     icon: TaskTools,
     link: routes.TOOLS, //TODO: update route
-  },
+  }
 ];
 
 export { headerNavLinks, navMenuLinks };

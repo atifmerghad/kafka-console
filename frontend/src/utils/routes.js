@@ -15,6 +15,7 @@ const routes = {
     TRACK: "/track",
     TOOLS: "/tools",
     NOT_FOUND: "/404",
-    PROFILE: "/user"
+    PROFILE: "/user",
+    CLIENTS: "/clients"
   };
   export default routes;

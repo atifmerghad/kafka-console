@@ -37,18 +37,12 @@ const Tools = () => {
             <div className="page-container">
                 <Form>
                     <Stack gap={7}>
-                        <TextInput
-                            id="test2"
-                            invalidText="Invalid error message."
-                            labelText="Auttomate Kafka Tasks"
-                            placeholder="Boostrap Server"
-                        />
                         <Stack gap={6} orientation="horizontal">
                             <TextInput
                                 id="test2"
                                 invalidText="Invalid error message."
-                                labelText="Username"
-                                placeholder="EX. admin"
+                                labelText="Topic Name"
+                                placeholder="topic_test"
                             />
                             <TextInput
                                 id="test2"
@@ -62,7 +56,7 @@ const Tools = () => {
                                 <Button
                                     kind="primary"
                                     tabIndex={0}
-                                    type="submit"
+                                    
                                 >
                                     Save
                                 </Button>
@@ -101,9 +95,8 @@ const Tools = () => {
                         <Button
                             kind="primary"
                             tabIndex={0}
-                            type="submit"
                         >
-                            Process
+                            Run Query
                         </Button>
 
                         <Tile>

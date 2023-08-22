@@ -22,6 +22,7 @@ const Connectors = lazy(() => import("../pages/Connectors/Connectors"));
 const Schemas = lazy(() => import("../pages/Schemas/Schemas"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 const Profile = lazy(() => import("../pages/Profile/Profile"));
+const Clients = lazy(() => import("../pages/Clients/Clients"));
 
 // const Router = ({ handleSpinnerStatus })
 // <Map handleSpinnerStatus={handleSpinnerStatus} />
@@ -143,6 +144,14 @@ const Router = () => {
             </Suspense>
           }
           path={routes.PROFILE}
+        ></Route>
+        <Route
+          element={
+            <Suspense fallback={<LoadingScreen />}>
+              <Clients />
+            </Suspense>
+          }
+          path={routes.CLIENTS}
         ></Route>
          <Route
           path="*"

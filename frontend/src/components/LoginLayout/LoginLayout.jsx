@@ -5,7 +5,7 @@ const LoginLayout = ({ children }) => {
   return (
     <Theme theme={APP_THEME}>
       <Header aria-label={APP_NAME}>
-        <HeaderName href="#" prefix="IBM">
+        <HeaderName href="#" prefix="X">
           {APP_NAME}
         </HeaderName>
       </Header>
