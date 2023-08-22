@@ -5,6 +5,7 @@ const routes = {
     TOPICS: "/topics",
     TOPIC_DETAILS: "/topic-details",
     SCHEMA: "/schemas",
+    SCHEMA_DETAILS: "/schema-details",
     CONSUMERS: "/consumers",
     GROUPS: "/groups",
     METRIC: "/metrics",
@@ -16,6 +17,7 @@ const routes = {
     TOOLS: "/tools",
     NOT_FOUND: "/404",
     PROFILE: "/user",
-    CLIENTS: "/clients"
+    CLIENTS: "/clients",
+    KSQLDB: "/ksqldb"
   };
   export default routes;

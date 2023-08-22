@@ -1,17 +1,14 @@
 import { Suspense, lazy } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import useToken from "../hooks/useToken";
 import routes from "./routes";
 import { LoadingScreen } from "../pages/Loading/LoadingScreen";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 
-const Login = lazy(() => import("../pages/Login/Login"));
 const Overview = lazy(() => import("../pages/Overview/Overview"));
 const Brokers = lazy(() => import("../pages/Brokers/Brokers"));
 const Topics = lazy(() => import("../pages/Topics/Topics"));
 const TopicDetails = lazy(() => import("../pages/Topics/TopicDetails"));
-const ShemaPage = lazy(() => import("../pages/Metrics/Metrics"));
 const ConnectPage = lazy(() => import("../pages/Metrics/Metrics"));
 const Metric = lazy(() => import("../pages/Metrics/Metrics"));
 const Security = lazy(() => import("../pages/Security/Security"));
@@ -20,6 +17,7 @@ const Tools = lazy(() => import("../pages/Tools/Tools"));
 const ConsumerGroup = lazy(() => import("../pages/Groups/Groups"));
 const Connectors = lazy(() => import("../pages/Connectors/Connectors"));
 const Schemas = lazy(() => import("../pages/Schemas/Schemas"));
+const SchemaDetails = lazy(() => import("../pages/Schemas/SchemaDetails"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 const Profile = lazy(() => import("../pages/Profile/Profile"));
 const Clients = lazy(() => import("../pages/Clients/Clients"));
@@ -70,6 +68,14 @@ const Router = () => {
             </Suspense>
           }
           path={routes.SCHEMA}
+        ></Route>
+        <Route
+          element={
+            <Suspense fallback={<LoadingScreen />}>
+              <SchemaDetails />
+            </Suspense>
+          }
+          path={routes.SCHEMA_DETAILS}
         ></Route>
         <Route
           element={
@@ -135,6 +141,15 @@ const Router = () => {
             </Suspense>
           }
           path={routes.TOOLS}
+        ></Route>
+
+  <Route
+          element={
+            <Suspense fallback={<LoadingScreen />}>
+              <NotFound />
+            </Suspense>
+          }
+          path={routes.KSQLDB}
         ></Route>
 
         <Route

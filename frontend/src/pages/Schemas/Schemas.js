@@ -11,6 +11,7 @@ import {
 } from '@carbon/react';
 import { headerData, responseSchemas } from './sampleData';
 import { Save, Download, Add, TrashCan } from '@carbon/react/icons';
+import { useNavigate } from 'react-router-dom';
 
 
 import Layout from "../../components/Layout/Layout";
@@ -20,6 +21,8 @@ import { apiClient } from "../../utils/client";
  
 const Schemas = () => {
   
+  const navigate = useNavigate();
+
   const [isLoading, SetIsLoading] = useState(true);
   const [rows, setRows] = useState([]);
   const [groups, setGroups] = useState([]);
@@ -104,7 +107,7 @@ const Schemas = () => {
             headers,
             getHeaderProps,
             getRowProps,
-            getSelectionProps,
+            getSelectionProps, 
             getBatchActionProps,
             onInputChange,
             selectedRows,
@@ -161,7 +164,9 @@ const Schemas = () => {
                   {rows.map((row) => (
                     <TableRow {...getRowProps({ row })}>
                       {row.cells.map((cell) => (
-                        <TableCell key={cell.id}>{cell.value}</TableCell>
+
+(cell.id == row.id+':subject')?<TableCell key={cell.id}  onClick={(e)=>{ navigate('/schema-details?schema='+cell.value);}}>{cell.value}</TableCell>:
+                        <TableCell key={cell.id}>{cell.value}</TableCell> 
                       ))}
                     </TableRow>
                   ))}

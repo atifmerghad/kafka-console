@@ -99,8 +99,16 @@ const getAllConsumerGroups = async () => {
   } catch { }
 };
 
+const getKSQLDBStreams = async () => {
+  try {
+    let res = await ApiFetch(`${constants.GET_KSQLDB_STREAMS}`, "GET");
+    if (res) return { res };
+  } catch { }
+};
+
 
 export {
   getAllBrokers,
-  getAllConsumerGroups
+  getAllConsumerGroups,
+  getKSQLDBStreams
 };

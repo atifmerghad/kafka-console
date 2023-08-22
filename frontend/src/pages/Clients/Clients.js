@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from "../../components/Layout/Layout";
-import { ProgressIndicator, ProgressStep, Tile } from '@carbon/react';
+import { ProgressIndicator, ProgressStep, Tile,Column, Grid } from '@carbon/react';
 
 const Clients = () => {
    
@@ -11,7 +11,9 @@ const Clients = () => {
         <p>Produce and consume data with your cluster in the programming language of your choice.</p>
         <br/>
         <div className="some-container">
-      <ProgressIndicator vertical>
+        <Grid narrow>
+          <Column sm={4}>
+          <ProgressIndicator vertical>
         <ProgressStep
           complete
           label="Choose your language"
@@ -41,6 +43,11 @@ const Clients = () => {
           disabled
         />
       </ProgressIndicator>
+          </Column>
+          <Column sm={4}>
+          Test
+          </Column>
+        </Grid>
     </div>
             </div>
         </Layout>

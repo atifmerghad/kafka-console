@@ -14,7 +14,8 @@ import {
   TaskTools,
   Activity,
   Api,
-  Laptop
+  Laptop,
+  Sql
 } from "@carbon/icons-react";
 import routes from "./routes";
 
@@ -91,6 +92,12 @@ const navMenuLinks = [
     title: "Track",
     icon: Activity,
     link: routes.TRACK, //TODO: update route
+  },
+  {
+    key: "ksqldb",
+    title: "KSQLDB",
+    icon: Sql,
+    link: routes.KSQLDB, //TODO: update route
   },
   {
     key: "clients",

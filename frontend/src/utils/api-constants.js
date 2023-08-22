@@ -17,5 +17,6 @@ export const constants = {
   GET_CONNECTOR_DETAILS: `${PATH}connector_details`,
   GET_SCHEMAS: `${PATH}schema-registries`,
   GET_CONSUMER: `${PATH}consumer-group`,
-  GET_X: `${PATH}schema-registries`
+  GET_X: `${PATH}schema-registries`,
+  GET_KSQLDB_STREAMS: `${PATH}ksql/streams`,
 };
