@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import routes from "./routes";
 import { LoadingScreen } from "../pages/Loading/LoadingScreen";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
-
 const Overview = lazy(() => import("../pages/Overview/Overview"));
 const Brokers = lazy(() => import("../pages/Brokers/Brokers"));
 const Topics = lazy(() => import("../pages/Topics/Topics"));
@@ -21,6 +20,7 @@ const SchemaDetails = lazy(() => import("../pages/Schemas/SchemaDetails"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 const Profile = lazy(() => import("../pages/Profile/Profile"));
 const Clients = lazy(() => import("../pages/Clients/Clients"));
+const KsqlDB = lazy(() => import("../pages/KsqlDB/KsqlDB"));
 
 // const Router = ({ handleSpinnerStatus })
 // <Map handleSpinnerStatus={handleSpinnerStatus} />
@@ -112,14 +112,6 @@ const Router = () => {
         <Route
           element={
             <Suspense fallback={<LoadingScreen />}>
-             <NotFound />
-            </Suspense>
-          }
-          path={routes.KSQLDB}
-        ></Route>
-        <Route
-          element={
-            <Suspense fallback={<LoadingScreen />}>
               <NotFound />
             </Suspense>
           }
@@ -146,7 +138,7 @@ const Router = () => {
   <Route
           element={
             <Suspense fallback={<LoadingScreen />}>
-              <NotFound />
+              <KsqlDB />
             </Suspense>
           }
           path={routes.KSQLDB}
