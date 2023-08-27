@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.*;
 import static java.util.stream.Collectors.toMap;
+import static org.apache.logging.log4j.util.Strings.isNotBlank;
 
 @Component
 @Slf4j
@@ -62,6 +63,17 @@ public class AppConfig {
 
     private String sanitizeClusterId(String clusterId) {
         return clusterId.replaceAll(SPECIAL_CHARS, "_");
+    }
+
+    private void setupSchema(String schemaRegistryUrl){
+        if (isNotBlank(schemaRegistryUrl)) {
+            /* 
+            simpleClusterConfig.setSchemaRegistry(SchemaRegistryConfig.builder()
+                    .url(schemaRegistryUrl)
+                    .build());
+            */
+        }
+        //this.clusterConfig.put(clusterId, simpleClusterConfig);
     }
 
 }
